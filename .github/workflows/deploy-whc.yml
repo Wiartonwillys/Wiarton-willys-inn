@@ -33,13 +33,11 @@ jobs:
         run: pnpm build
 
       - name: Upload built site to WHC
-        uses: appleboy/scp-action@v1
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
-          host: ${{ secrets.WHC_SSH_HOST }}
-          username: ${{ secrets.WHC_SSH_USERNAME }}
-          password: ${{ secrets.WHC_SSH_PASSWORD }}
-          port: ${{ secrets.WHC_SSH_PORT }}
-          source: "dist/*"
-          target: ${{ secrets.WHC_REMOTE_DIR }}
-          strip_components: 1
-          overwrite: true
+          server: ${{ secrets.WHC_FTP_SERVER }}
+          username: ${{ secrets.WHC_FTP_USERNAME }}
+          password: ${{ secrets.WHC_FTP_PASSWORD }}
+          protocol: ftp
+          local-dir: ./dist/
+          server-dir: ${{ secrets.WHC_FTP_SERVER_DIR }}
