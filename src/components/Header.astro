@@ -1,0 +1,118 @@
+---
+import { siteConfig } from "../data/siteConfig.js";
+import { mainNav, mobileNav } from "../data/navigation.js";
+import { siteImages } from "../data/siteImages.js";
+
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isHome = currentPath === "/";
+const active = (href) => {
+  if (href === "/") return currentPath === "/";
+  return currentPath === href || currentPath.startsWith(`${href}/`);
+};
+---
+
+<header class:list={["site-header", isHome && "site-header--home"]} data-site-header>
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label="Wiarton Willys Inn home">
+      <img class="site-header__logo-image" src={siteImages.global.logo} alt="" width="720" height="259" aria-hidden="true" />
+      <span class="sr-only">Wiarton Willys Inn</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Main navigation">
+      {mainNav.map((item) => (
+        <a href={item.href} class:list={[active(item.href) && "is-active"]}>{item.label}</a>
+      ))}
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="site-header__call" href={siteConfig.phoneLink} data-track="call" aria-label={`Call ${siteConfig.name}`}>
+        Call
+      </a>
+      <a class="btn btn-primary" href={siteConfig.bookingUrl} data-track="book-direct" rel="noopener noreferrer">
+        Book Direct
+      </a>
+    </div>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-open>
+      Menu
+    </button>
+  </div>
+</header>
+
+<div class="menu-backdrop" data-menu-backdrop hidden></div>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu hidden>
+  <div class="mobile-menu__top">
+    <a class="site-header__brand" href="/" aria-label="Wiarton Willys Inn home">
+      <img class="site-header__logo-image" src={siteImages.global.logo} alt="" width="720" height="259" aria-hidden="true" />
+      <span class="sr-only">Wiarton Willys Inn</span>
+    </a>
+    <button class="mobile-menu__close" type="button" aria-label="Close menu" data-menu-close>×</button>
+  </div>
+  <ul class="mobile-menu__links">
+    {mobileNav.map((item) => (
+      <li>
+        <a
+          href={item.href}
+          rel={item.external ? "noopener noreferrer" : undefined}
+          data-track={item.track}
+          data-primary={item.label === "Book Direct" ? "true" : undefined}
+        >
+          {item.label}
+          <span aria-hidden="true">→</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script>
+  const header = document.querySelector("[data-site-header]");
+  if (header?.classList.contains("site-header--home")) {
+    const updateHeader = () => header.classList.toggle("is-scrolled", window.scrollY > 24);
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+  }
+
+  const openButton = document.querySelector("[data-menu-open]");
+  const closeButton = document.querySelector("[data-menu-close]");
+  const menu = document.querySelector("[data-mobile-menu]");
+  const backdrop = document.querySelector("[data-menu-backdrop]");
+  let lastFocusedElement = null;
+
+  const openMenu = () => {
+    if (!menu || !backdrop || !openButton) return;
+    lastFocusedElement = document.activeElement;
+    menu.hidden = false;
+    backdrop.hidden = false;
+    requestAnimationFrame(() => {
+      menu.classList.add("is-open");
+      backdrop.classList.add("is-open");
+      document.body.classList.add("mobile-menu-open");
+      openButton.setAttribute("aria-expanded", "true");
+      menu.querySelector("a, button")?.focus();
+    });
+  };
+
+  const closeMenu = () => {
+    if (!menu || !backdrop || !openButton) return;
+    menu.classList.remove("is-open");
+    backdrop.classList.remove("is-open");
+    document.body.classList.remove("mobile-menu-open");
+    openButton.setAttribute("aria-expanded", "false");
+    setTimeout(() => {
+      menu.hidden = true;
+      backdrop.hidden = true;
+      lastFocusedElement?.focus?.();
+    }, 210);
+  };
+
+  openButton?.addEventListener("click", openMenu);
+  closeButton?.addEventListener("click", closeMenu);
+  backdrop?.addEventListener("click", closeMenu);
+  menu?.addEventListener("click", (event) => {
+    if (event.target instanceof HTMLAnchorElement) closeMenu();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menu && !menu.hidden) closeMenu();
+  });
+</script>

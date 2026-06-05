@@ -1,0 +1,36 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import BackLink from "../components/BackLink.astro";
+import ImageFrame from "../components/ImageFrame.astro";
+
+const {
+  title,
+  description,
+  h1,
+  eyebrow,
+  copy,
+  image,
+  imageAlt,
+  breadcrumbs = [],
+  schema = [],
+  canonicalPath,
+  pageType,
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} image={image} schema={schema} pageType={pageType}>
+  <section class="hero hero--page">
+    <div class="hero__media">
+      <ImageFrame src={image} alt={imageAlt || h1} loading="eager" fetchpriority="high" />
+    </div>
+    <div class="container hero__content">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <h1>{h1}</h1>
+      {copy && <p class="lead">{copy}</p>}
+    </div>
+  </section>
+  <Breadcrumbs items={breadcrumbs} />
+  <BackLink />
+  <slot />
+</BaseLayout>

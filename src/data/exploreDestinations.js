@@ -1,0 +1,94 @@
+import { siteImages } from "./siteImages.js";
+
+export const destinations = [
+  {
+    slug: "tobermory",
+    title: "Tobermory",
+    seoKey: "tobermory",
+    href: "/explore/tobermory",
+    cardImage: siteImages.exploreNearby.tobermoryCard,
+    heroImage: siteImages.exploreNearby.tobermoryMain,
+    gallery: [
+      { src: siteImages.exploreNearby.tobermoryBoatTours, alt: "Nearby Tobermory boat tours", caption: "Nearby Tobermory Boat Tours" },
+      { src: siteImages.exploreNearby.tobermoryClearWater, alt: "Nearby clear water shoreline in Tobermory", caption: "Nearby Clear Water" },
+    ],
+    subtitle: "Clear water, boat tours, Flowerpot Island, and unforgettable Bruce Peninsula views.",
+    cardCopy: "Boat tours, clear water, Flowerpot Island, and unforgettable Bruce Peninsula views.",
+    tags: ["Boat Tours", "Clear Water", "Day Trip"],
+    pageTags: ["Boat Tours", "Clear Water", "Sightseeing", "Day Trip", "Photos"],
+    distance: "About 45 minutes from Wiarton Willys Inn",
+    whyGo:
+      "Tobermory is one of the Bruce Peninsula’s most memorable day trips, known for clear blue water, boat tours, Flowerpot Island, shoreline views, and access to some of the area’s most iconic scenery.",
+    bestThings: [
+      "Take a boat tour",
+      "Visit Flowerpot Island",
+      "See the clear water and shoreline views",
+      "Explore the harbour area",
+      "Enjoy a Bruce Peninsula day trip",
+    ],
+    nearbyNote: "Tobermory is a nearby day-trip destination, not located on-property at Wiarton Willys Inn.",
+  },
+  {
+    slug: "sauble-beach",
+    title: "Sauble Beach",
+    seoKey: "saubleBeach",
+    href: "/explore/sauble-beach",
+    cardImage: siteImages.exploreNearby.saubleBeachCard,
+    heroImage: siteImages.exploreNearby.saubleBeachMain,
+    gallery: [
+      { src: siteImages.exploreNearby.saubleBeachSunset, alt: "Nearby Sauble Beach sunset", caption: "Nearby Sauble Beach Sunset" },
+      { src: siteImages.exploreNearby.saubleBeachShoreline, alt: "Nearby Sauble Beach shoreline", caption: "Nearby Shoreline" },
+    ],
+    subtitle: "A classic beach day with sand, swimming, the strip, and some of the area’s best sunsets.",
+    cardCopy: "Spend the day on the sand, swim, explore the strip, and enjoy some of the area’s best sunsets.",
+    tags: ["Beach Day", "Swimming", "Sunsets"],
+    pageTags: ["Beach Day", "Swimming", "Sunsets", "Families", "Summer Trips"],
+    distance: "About 15 minutes from Wiarton Willys Inn",
+    whyGo:
+      "Sauble Beach is an easy day trip from Wiarton Willys Inn, with a long sandy beach, summer swimming, food options, shops, and sunset views that make it one of the area’s most popular stops.",
+    bestThings: ["Spend time on the beach", "Swim during warm weather", "Explore the strip", "Grab food or ice cream", "Catch the sunset"],
+    nearbyNote: "Sauble Beach is a nearby destination, not located on-property at Wiarton Willys Inn.",
+  },
+  {
+    slug: "bluewater-park",
+    title: "Bluewater Park",
+    seoKey: "bluewaterPark",
+    href: "/explore/bluewater-park",
+    cardImage: siteImages.exploreNearby.bluewaterParkCard,
+    heroImage: siteImages.exploreNearby.bluewaterParkMain,
+    gallery: [
+      { src: siteImages.exploreNearby.bluewaterParkWaterfront, alt: "Nearby Bluewater Park waterfront", caption: "Nearby Waterfront" },
+    ],
+    subtitle: "An easy waterfront stop close to the inn with dock views, picnic space, a playground, and room to slow down.",
+    cardCopy: "Just 4 minutes from the inn, Bluewater Park is an easy waterfront stop with dock views, a playground, pool, and plenty of picnic space.",
+    tags: ["4 Min Away", "Waterfront", "Playground"],
+    pageTags: ["4 Min Away", "Waterfront", "Playground", "Picnic Stop", "Easy Outing"],
+    distance: "About 4 minutes from Wiarton Willys Inn",
+    whyGo:
+      "Bluewater Park is one of the easiest nearby stops from Wiarton Willys Inn, offering waterfront views, open space, a playground, picnic areas, and a relaxed place to enjoy Wiarton without a long drive.",
+    bestThings: ["Walk by the waterfront", "Enjoy dock and shoreline views", "Bring kids to the playground", "Have a picnic", "Take sunset or waterfront photos"],
+    nearbyNote: "Bluewater Park is a nearby public park, not located on-property at Wiarton Willys Inn.",
+  },
+  {
+    slug: "bruces-caves",
+    title: "Bruce’s Caves",
+    seoKey: "brucesCaves",
+    href: "/explore/bruces-caves",
+    cardImage: siteImages.exploreNearby.brucesCavesCard,
+    heroImage: siteImages.exploreNearby.brucesCavesMain,
+    gallery: [
+      { src: siteImages.exploreNearby.brucesCavesTrail, alt: "Nearby Bruce’s Caves trail", caption: "Nearby Forest Trail" },
+    ],
+    subtitle: "Forest trails, limestone caves, scenic views, and a nearby stop many visitors miss.",
+    cardCopy: "Just 11 minutes from the inn, Bruce’s Caves is a hidden gem many visitors miss — with forest trails, limestone caves, and a scenic drive with Georgian Bay views.",
+    tags: ["11 Min Away", "Caves & Trails", "Scenic Drive"],
+    pageTags: ["11 Min Away", "Caves & Trails", "Nature Stop", "Photos", "Short Outing"],
+    distance: "About 11 minutes from Wiarton Willys Inn",
+    whyGo:
+      "Bruce’s Caves is a close and memorable stop near Wiarton, with forest trails, limestone cave formations, and a scenic drive that gives guests another easy way to explore the area without spending the whole day on the road.",
+    bestThings: ["Explore the cave area", "Walk the forest trails", "Take photos of the limestone formations", "Enjoy a short local nature stop", "Pair it with Bluewater Park or a Wiarton outing"],
+    nearbyNote: "Bruce’s Caves is a nearby attraction, not located on-property at Wiarton Willys Inn.",
+  },
+];
+
+export const getDestinationBySlug = (slug) => destinations.find((destination) => destination.slug === slug);

@@ -1,0 +1,275 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ImageFrame from "../components/ImageFrame.astro";
+import RoomCard from "../components/RoomCard.astro";
+import TrustCard from "../components/TrustCard.astro";
+import FAQAccordion from "../components/FAQAccordion.astro";
+import CTASection from "../components/CTASection.astro";
+import { siteConfig } from "../data/siteConfig.js";
+import { siteImages } from "../data/siteImages.js";
+import { roomCards } from "../data/rooms.js";
+import { homepageFaqs } from "../data/faqs.js";
+import { seo } from "../data/seo.js";
+import { breadcrumbSchema, faqSchema, motelSchema, webpageSchema } from "../data/schema.js";
+
+const meta = seo.home;
+const schema = [
+  motelSchema(siteImages.homepage.firePitPreview),
+  breadcrumbSchema([{ label: "Home", href: "/" }]),
+  faqSchema(homepageFaqs),
+  webpageSchema({ title: meta.title, description: meta.description, path: "/" }),
+];
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  canonicalPath="/"
+  image={siteImages.homepage.firePitPreview}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+  schema={schema}
+  pageType="home"
+>
+  <section class="hero">
+    <div class="hero__media">
+      <ImageFrame src={siteImages.homepage.firePitPreview} alt="Fire pit outdoor space at Wiarton Willys Inn" loading="eager" fetchpriority="high" />
+    </div>
+    <div class="container hero__content">
+      <p class="eyebrow">FIRE PITS. FRESHLY UPDATED ROOMS. SPACE TO UNWIND.</p>
+      <h1>Your relaxed home base near the Bruce Peninsula.</h1>
+      <p class="lead">Explore <a href="/explore/sauble-beach">Sauble Beach</a>, <a href="/explore/tobermory">Tobermory</a>, <a href="/explore/bluewater-park">Bluewater Park</a>, <a href="/explore/bruces-caves">Bruce Caves</a>, and local trails — then come back to clean rooms, warm fire pits, and a refreshing pool.</p>
+      <div class="button-row">
+        <a class="btn btn-primary" href={siteConfig.bookingUrl} rel="noopener noreferrer" data-track="book-direct">Book Direct</a>
+        <a class="btn btn-secondary" href="/rooms">View Rooms</a>
+      </div>
+      <p class="hero__phone">Prefer to call? <a href={siteConfig.phoneLink} data-track="call">(519) 534-3907</a></p>
+    </div>
+  </section>
+
+  <section class="quick-value">
+    <div class="container quick-value__grid">
+      <div class="quick-value__item">
+        <strong>Freshly Updated Rooms</strong>
+        <span>Clean, practical room setups for couples, families, groups, and workers.</span>
+      </div>
+      <div class="quick-value__item">
+        <strong>Fire Pit Evenings</strong>
+        <span>Fire pits, seating areas, and green space after a full day out.</span>
+      </div>
+      <div class="quick-value__item">
+        <strong>Seasonal Pool</strong>
+        <span>A simple place to cool down during warmer months, weather permitting.</span>
+      </div>
+      <div class="quick-value__item">
+        <strong>Bruce Peninsula Home Base</strong>
+        <span>Stay in Wiarton near Sauble Beach, Tobermory, trails, food, and essentials.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Rooms</p>
+        <h2>Simple, Practical Rooms for Your Trip</h2>
+        <p class="lead">Choose a room that fits the way you travel, from short stays to family trips and flexible sleeping arrangements near Bruce Peninsula attractions.</p>
+      </div>
+      <div class="room-grid">
+        {roomCards.map((room) => <RoomCard room={room} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container split split--wide-left">
+      <div class="split__content">
+        <p class="eyebrow">Outdoor Spaces</p>
+        <h2>Settle Outside After the Day</h2>
+        <p class="lead">Our fire pits are a guest favourite for a reason — they’re a simple, relaxed way to enjoy the outdoor space after a day exploring the Bruce Peninsula.</p>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Firewood Available</h3>
+            <p>Firewood can be purchased from us, or guests may bring their own.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Enjoy Late Respectfully</h3>
+            <p>During quiet hours, use fire pits farther from rooms and keep music very low.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Keep It Safe</h3>
+            <p>Fires must be put out before leaving. Keep seating safely away from flames, and do not burn chairs, benches, stumps, or seating materials.</p>
+          </article>
+        </div>
+      </div>
+      <ImageFrame src={siteImages.homepage.firePitPreview} alt="Fire pit area at Wiarton Willys Inn" tall />
+    </div>
+  </section>
+
+  <section class="section" id="quick-essentials">
+    <div class="container essentials-board">
+      <div class="essentials-board__intro">
+        <p class="eyebrow">Quick Stops</p>
+        <h2>Quick Essentials Before Heading North</h2>
+        <p class="lead">Coffee, food, snacks, and quick stops — all close by before the day trip.</p>
+        <p class="essentials-board__note">Start fast, come back easy, and keep the little trip logistics close to the inn.</p>
+      </div>
+      <div class="local-stop-grid" aria-label="Nearby quick stops around Wiarton Willys Inn">
+        <article class="local-stop local-stop--red">
+          <span class="local-stop__kicker">Morning Run</span>
+          <h3>Tim Hortons Before the Peninsula</h3>
+          <p>Tim Hortons is nearby — the last Tims before heading farther north into the Bruce Peninsula. Grab coffee, breakfast, or a quick stop before the day starts.</p>
+        </article>
+        <article class="local-stop">
+          <span class="local-stop__kicker">After the Day</span>
+          <h3>Pizza, Subs & Easy Food</h3>
+          <p>Pizza Hut, Subway, local restaurants, pizza, and quick food options are close by when you want something simple after a long day out.</p>
+        </article>
+        <article class="local-stop local-stop--blue">
+          <span class="local-stop__kicker">Beach Reset</span>
+          <h3>Ice Cream & Local Treats</h3>
+          <p>Keep it low-effort after Sauble Beach, Tobermory, Bluewater Park, or Bruce Caves with ice cream and simple food stops nearby.</p>
+        </article>
+        <article class="local-stop local-stop--wide">
+          <span class="local-stop__kicker">Stock Up</span>
+          <h3>Groceries, Snacks & Basics</h3>
+          <p>Groceries, convenience stores, snacks, and everyday basics are nearby so you can grab what you need before heading out or settling in for the evening.</p>
+        </article>
+        <article class="local-stop local-stop--dark">
+          <span class="local-stop__kicker">Good to Ask</span>
+          <h3>LCBO + Current Guest Offers</h3>
+          <p>LCBO and convenience stops are close by, and you can ask us about current Pizza Hut guest offers during your stay.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark big-stops-section" id="explore-nearby-teaser">
+    <div class="container big-stops">
+      <div class="big-stops__copy">
+        <p class="eyebrow">Explore Nearby</p>
+        <h2>Stay Between the Big Bruce Peninsula Stops</h2>
+        <p class="lead">Use Wiarton Willys Inn as a practical base for <a href="/explore/sauble-beach">Sauble Beach</a>, <a href="/explore/tobermory">Tobermory</a>, <a href="/explore/bluewater-park">Bluewater Park</a>, <a href="/explore/bruces-caves">Bruce Caves</a>, local trails, shoreline views, and easy food nearby.</p>
+        <div class="big-stops__route-buttons" aria-label="Featured nearby destinations">
+          <a href="/explore/tobermory">Tobermory <span>45 min</span></a>
+          <a href="/explore/sauble-beach">Sauble Beach <span>15 min</span></a>
+        </div>
+        <div class="button-row">
+          <a class="btn btn-light" href="/explore">Explore Nearby</a>
+        </div>
+      </div>
+      <div class="big-stop-posters">
+        <a class="big-stop-card big-stop-card--tobermory" href="/explore/tobermory">
+          <ImageFrame src={siteImages.exploreNearby.tobermoryCard} alt="Nearby Tobermory harbour and blue water" />
+          <div class="big-stop-card__content">
+            <span>45 min drive</span>
+            <strong>Tobermory</strong>
+            <p>Boat tours, clear water, Flowerpot Island, and harbour views.</p>
+          </div>
+        </a>
+        <a class="big-stop-card big-stop-card--sauble" href="/explore/sauble-beach">
+          <ImageFrame src={siteImages.exploreNearby.saubleBeachCard} alt="Nearby Sauble Beach sunset" />
+          <div class="big-stop-card__content">
+            <span>15 min drive</span>
+            <strong>Sauble Beach</strong>
+            <p>Beach day, swimming, food stops, the strip, and sunset.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container pool-layout">
+      <ImageFrame src={siteImages.homepage.poolPreview} alt="Seasonal pool at Wiarton Willys Inn" tall />
+      <div class="split__content">
+        <p class="eyebrow">Seasonal Pool</p>
+        <h2>Cool Off After the Day’s Adventure.</h2>
+        <p class="lead">When the weather’s warm, the seasonal pool gives guests an easy place to cool down, relax, and reset after a full day out.</p>
+        <div class="pool-layout__cards">
+          <article class="feature-card">
+            <h3>Cool Down</h3>
+            <p>Refresh after a warm beach day, hike, drive, or day trip.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Slow Down</h3>
+            <p>Relax by the water before dinner, fire pits, or an easy evening outside.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Reset</h3>
+            <p>Take a simple break before heading back to your room for the night.</p>
+          </article>
+        </div>
+        <p><a href="/policies#pool">Pool is seasonal. View pool details & rules.</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container">
+      <div class="section-heading center">
+        <p class="eyebrow">Guest Confidence</p>
+        <h2>Guests Remember the Little Things.</h2>
+      </div>
+      <div class="trust-grid">
+        <TrustCard title="Clean Rooms" copy="Fresh, practical, and comfortable after a full day out." />
+        <TrustCard title="Helpful Service" copy="Easy communication for questions, pets, arrivals, and stay details." />
+        <TrustCard title="Outdoor Space" copy="Fire pits, green space, seating areas, and seasonal pool time." />
+        <TrustCard title="Smart Location" copy="Close to Sauble Beach, Tobermory, Bruce Caves, Bluewater Park, food, and essentials." />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container book-direct">
+      <p class="eyebrow">Book Direct</p>
+      <h2>Book Direct for a Smoother Stay</h2>
+      <p><strong>When you book direct, you’re guaranteed to deal directly with Wiarton Willys Inn — not through a third-party booking site.</strong></p>
+      <p>Get easier communication, direct help from the property, and our best available direct rates when you book through our website or by phone.</p>
+      <div class="book-direct__grid">
+        <div class="book-direct__benefit"><strong>Best Rates When You Book Direct</strong>Get our best available direct rates when you book through our website or by phone.</div>
+        <div class="book-direct__benefit"><strong>Talk to Us Directly</strong>Questions about pets, arrival time, room options, or your stay? Direct booking keeps communication simple.</div>
+        <div class="book-direct__benefit"><strong>Easier Arrival Planning</strong>Late check-ins, special requests, and stay details are easier to handle when you book with us directly.</div>
+        <div class="book-direct__benefit"><strong>Less Back-and-Forth</strong>Skip the third-party confusion and deal directly with the people managing your stay.</div>
+      </div>
+      <div class="button-row">
+        <a class="btn btn-primary" href={siteConfig.bookingUrl} rel="noopener noreferrer" data-track="book-direct">Book Direct</a>
+        <a class="btn btn-light" href={siteConfig.phoneLink} data-track="call">Call Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container split">
+      <div class="split__content">
+        <p class="eyebrow">Longer Stays</p>
+        <h2>Long-Term & Work Stays in Wiarton</h2>
+        <p class="lead">For contractors, crews, organizations, and monthly stays, call us directly to talk through availability, timing, and the best possible rate for your stay.</p>
+        <div class="button-row">
+          <a class="btn btn-primary" href={siteConfig.phoneLink} data-track="long-term-call">Call About Long-Term Stays</a>
+          <a class="btn btn-secondary" href="/long-term-stays">View Details</a>
+        </div>
+      </div>
+      <ImageFrame src={siteImages.homepage.longTermPreview} alt="Practical room for a long-term or work stay in Wiarton" wide />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split split--top">
+      <div class="section-heading">
+        <p class="eyebrow">Questions</p>
+        <h2>Helpful Details Before You Book</h2>
+        <p class="lead">Still have questions? Call us — we’re happy to help with room options, pet requests, late arrivals, longer stays, and any other questions you may have.</p>
+        <div class="button-row">
+          <a class="btn btn-secondary" href={siteConfig.phoneLink} data-track="call">Call Us</a>
+        </div>
+      </div>
+      <FAQAccordion faqs={homepageFaqs} />
+    </div>
+  </section>
+
+  <CTASection
+    title="Ready to Plan Your Stay?"
+    copy="Book direct or call Wiarton Willys Inn for room options, pet requests, late arrivals, and longer stays."
+  />
+</BaseLayout>

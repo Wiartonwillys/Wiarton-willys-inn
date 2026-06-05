@@ -1,0 +1,17 @@
+---
+import ImageFrame from "./ImageFrame.astro";
+
+const { title, h1, subtitle, distance, image } = Astro.props;
+---
+
+<section class="hero hero--page destination-hero">
+  <div class="hero__media">
+    <ImageFrame src={image} alt={`Nearby ${title}`} loading="eager" fetchpriority="high" />
+  </div>
+  <div class="container hero__content">
+    <p class="eyebrow">Nearby Day Trip</p>
+    <h1>{h1}</h1>
+    <p class="lead">{subtitle}</p>
+    <span class="destination-hero__distance">{distance}</span>
+  </div>
+</section>

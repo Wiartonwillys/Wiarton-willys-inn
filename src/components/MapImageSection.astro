@@ -1,0 +1,20 @@
+---
+import ImageFrame from "./ImageFrame.astro";
+
+const { src, alt } = Astro.props;
+---
+
+<section class="section map-showcase-section" id="explore-map">
+  <div class="container map-section">
+    <h2 class="sr-only">Nearby drive times map</h2>
+    <ul class="map-drive-times" aria-label="Approximate drive times from Wiarton Willys Inn">
+      <li><strong>Bluewater Park</strong><span>4 min drive</span></li>
+      <li><strong>Sauble Beach</strong><span>15 min drive</span></li>
+      <li><strong>Bruce’s Caves</strong><span>11 min drive</span></li>
+      <li><strong>Tobermory</strong><span>45 min drive</span></li>
+    </ul>
+    <div class="map-frame">
+      <ImageFrame src={src} alt={alt} class="image-frame--soft" loading="lazy" />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,74 @@
+---
+import { siteConfig } from "../data/siteConfig.js";
+import { footerLinks } from "../data/navigation.js";
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <h2>Wiarton Willys Inn</h2>
+      <p>A relaxed Wiarton home base for Bruce Peninsula trips, outdoor evenings, family stays, and longer work stays.</p>
+      <div class="footer-contact">
+        <a href="https://www.google.com/maps/search/?api=1&query=200%20Berford%20Street%2C%20Wiarton%2C%20ON%20N0H%202T0" rel="noopener noreferrer">
+          200 Berford Street, Wiarton, ON N0H 2T0
+        </a>
+        <a href={siteConfig.phoneLink} data-track="call">(519) 534-3907</a>
+        <a href={siteConfig.emailLink} data-track="email">rest@wiartonwillys.com</a>
+      </div>
+    </div>
+
+    <div class="footer-cta">
+      <h3>Book Direct for a Smoother Stay</h3>
+      <p>Deal directly with Wiarton Willys Inn for easier communication, room questions, pet requests, and our best available direct rates.</p>
+      <div>
+        <a class="btn btn-primary" href={siteConfig.bookingUrl} rel="noopener noreferrer" data-track="book-direct">Book Direct</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer-columns" aria-label="Footer links">
+    <div class="footer-column">
+      <h3>Rooms</h3>
+      <ul>
+        {footerLinks.rooms.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Explore</h3>
+      <ul>
+        {footerLinks.explore.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Guest Info</h3>
+      <ul>
+        {footerLinks.guestInfo.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Good to Know</h3>
+      <ul>
+        <li>Pet-friendly rooms by request</li>
+        <li>Fire pits available</li>
+        <li>Seasonal outdoor pool</li>
+        <li><a href="/long-term-stays">Long-term & work stays</a></li>
+        <li>Free parking</li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Stay Details</h3>
+      <ul>
+        <li>Check-in: 2:00 PM – 11:00 PM</li>
+        <li>Check-out: 11:00 AM</li>
+        <li>Late arrivals: Please call ahead.</li>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/image-credits">Image Credits</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <span>© Wiarton Willys Inn. All rights reserved.</span>
+    <span>Proudly located in Wiarton, Ontario — a practical home base for Bruce Peninsula travel.</span>
+  </div>
+</footer>

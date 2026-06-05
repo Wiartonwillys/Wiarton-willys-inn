@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import BackLink from "../components/BackLink.astro";
+import { imageCredits } from "../data/imageCredits.js";
+import { breadcrumbSchema, webpageSchema } from "../data/schema.js";
+
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Image Credits", href: "/image-credits" },
+];
+const title = "Image Credits | Wiarton Willys Inn";
+const description = "Credits and licenses for third-party images used on the Wiarton Willys Inn website.";
+const schema = [
+  breadcrumbSchema(breadcrumbs),
+  webpageSchema({ title, description, path: "/image-credits" }),
+];
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/image-credits" schema={schema}>
+  <section class="section page-intro">
+    <div class="container narrow">
+      <p class="eyebrow">Credits</p>
+      <h1>Image Credits</h1>
+      <p class="lead">Some nearby destination and quick-stop photos are sourced from Wikimedia Commons so the site can show real area imagery while respecting photo licensing.</p>
+    </div>
+  </section>
+
+  <Breadcrumbs items={breadcrumbs} />
+  <BackLink />
+
+  <section class="section section-tight">
+    <div class="container credit-list">
+      {imageCredits.map((credit) => (
+        <article class="credit-item">
+          <h2>{credit.title}</h2>
+          <p>{credit.usage}</p>
+          <p>
+            Photo by {credit.author}. Licensed under <a href={credit.licenseUrl} rel="noopener noreferrer">{credit.license}</a>.
+            {" "}
+            <a href={credit.sourceUrl} rel="noopener noreferrer">View source</a>.
+          </p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

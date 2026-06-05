@@ -1,0 +1,55 @@
+---
+import { siteConfig } from "../data/siteConfig.js";
+import { siteImages, placeholderImage } from "../data/siteImages.js";
+
+const {
+  title,
+  description,
+  canonicalPath = Astro.url.pathname,
+  image = siteImages.global.og || placeholderImage,
+  ogTitle = title,
+  ogDescription = description,
+  schema = [],
+} = Astro.props;
+
+const baseUrl = siteConfig.siteUrl.replace(/\/$/, "");
+const canonicalUrl = new URL(canonicalPath, `${baseUrl}/`).toString();
+const imageUrl = new URL(image || placeholderImage, `${baseUrl}/`).toString();
+const schemaItems = Array.isArray(schema) ? schema.filter(Boolean) : [schema].filter(Boolean);
+---
+
+<meta charset="utf-8" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="canonical" href={canonicalUrl} />
+<link rel="icon" type="image/svg+xml" href="/images/global/favicon/favicon.svg" />
+<meta name="theme-color" content="#203f32" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={siteConfig.name} />
+<meta property="og:title" content={ogTitle} />
+<meta property="og:description" content={ogDescription} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={imageUrl} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={ogTitle} />
+<meta name="twitter:description" content={ogDescription} />
+<meta name="twitter:image" content={imageUrl} />
+
+{siteConfig.gaId && (
+  <>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.gaId}`}></script>
+    <script is:inline define:vars={{ gaId: siteConfig.gaId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){window.dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", gaId);
+    </script>
+  </>
+)}
+
+{schemaItems.map((item) => (
+  <script type="application/ld+json" set:html={JSON.stringify(item)} />
+))}

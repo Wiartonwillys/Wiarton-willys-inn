@@ -1,0 +1,143 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import BackLink from "../../components/BackLink.astro";
+import ImageFrame from "../../components/ImageFrame.astro";
+import ExploreCard from "../../components/ExploreCard.astro";
+import MapImageSection from "../../components/MapImageSection.astro";
+import CTASection from "../../components/CTASection.astro";
+import { siteConfig } from "../../data/siteConfig.js";
+import { siteImages } from "../../data/siteImages.js";
+import { destinations } from "../../data/exploreDestinations.js";
+import { seo } from "../../data/seo.js";
+import { breadcrumbSchema, webpageSchema } from "../../data/schema.js";
+
+const meta = seo.explore;
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Explore Nearby", href: "/explore" },
+];
+const schema = [
+  breadcrumbSchema(breadcrumbs),
+  webpageSchema({ title: meta.title, description: meta.description, path: "/explore" }),
+];
+---
+
+<BaseLayout title={meta.title} description={meta.description} canonicalPath="/explore" image={siteImages.exploreNearby.heroMain} schema={schema} pageType="explore">
+  <section class="hero hero--page">
+    <div class="hero__media">
+      <ImageFrame src={siteImages.exploreNearby.heroMain} alt="Nearby Bruce Peninsula scenery from Wiarton" loading="eager" fetchpriority="high" />
+    </div>
+    <div class="container hero__content">
+      <p class="eyebrow">Explore Nearby</p>
+      <h1>Beaches, Caves, Trails & Day Trips</h1>
+      <p class="lead">Spend your days between Sauble Beach, Tobermory, Bruce Caves, Bluewater Park, scenic trails, and shoreline views.</p>
+    </div>
+  </section>
+
+  <Breadcrumbs items={breadcrumbs} />
+  <BackLink />
+
+  <section class="section">
+    <div class="container split split--wide-left">
+      <div class="split__content">
+        <p class="eyebrow">Home Base</p>
+        <h2>Why Stay With Us While You Explore</h2>
+        <p class="lead">Stay between the big stops — about 15 minutes from <a href="/explore/sauble-beach">Sauble Beach</a> and 45 minutes from <a href="/explore/tobermory">Tobermory</a> — then come back to easy food nearby, warm fire pits, a refreshing pool, and a fresh room when the day is done.</p>
+        <ul class="pill-list">
+          <li class="tag">Home Base</li>
+          <li class="tag">15 Min to Sauble</li>
+          <li class="tag">45 Min to Tobermory</li>
+        </ul>
+      </div>
+      <ImageFrame src={siteImages.exploreNearby.whyStay} alt="Wiarton Willys Inn as a Bruce Peninsula home base" tall />
+    </div>
+  </section>
+
+  <section class="section section-band destination-section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Nearby Destinations</p>
+        <h2>Beaches, Caves, Parks, and Clear Water</h2>
+        <p class="lead">These are nearby day trips and public places around Wiarton, clearly separate from the property itself.</p>
+      </div>
+      <div class="destination-grid destination-grid--four">
+        {destinations.map((destination) => <ExploreCard destination={destination} />)}
+      </div>
+    </div>
+  </section>
+
+  <MapImageSection
+    src={siteImages.exploreNearby.openBookMap}
+    alt="Illustrated not-to-scale map showing Wiarton Willys Inn near Bluewater Park, Sauble Beach, Bruce’s Caves, Tobermory, and Highway 6 on the Bruce Peninsula."
+  />
+
+  <section class="section section-band">
+    <div class="container">
+      <div class="section-heading center">
+        <p class="eyebrow">Trip Rhythm</p>
+        <h2>A Smarter Way to Explore</h2>
+      </div>
+      <div class="timeline">
+        <article class="timeline__item">
+          <h3>Morning</h3>
+          <p>Grab Tim Hortons before heading north.</p>
+        </article>
+        <article class="timeline__item">
+          <h3>Day</h3>
+          <p>Take a Tobermory day trip for clear water, boat tours, and Bruce Peninsula views.</p>
+        </article>
+        <article class="timeline__item">
+          <h3>Evening</h3>
+          <p>Catch a Sauble Beach sunset and grab an easy meal nearby.</p>
+        </article>
+        <article class="timeline__item">
+          <h3>Night</h3>
+          <p>Come back to warm fire pits, a refreshing pool, and a fresh room.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Return to Relax</p>
+        <h2>After the Day Trip</h2>
+      </div>
+      <div class="return-grid">
+        <article class="return-card">
+          <ImageFrame src={siteImages.exploreNearby.firePitReturn} alt="Fire pit area at Wiarton Willys Inn" square />
+          <h3>Fire Pit Evenings</h3>
+          <p>Settle outside after a beach day, cave walk, boat tour, or long drive.</p>
+        </article>
+        <article class="return-card">
+          <ImageFrame src={siteImages.homepage.explorePreview} alt="Tim Hortons storefront in Ontario" square />
+          <h3>Simple Eats After Exploring</h3>
+          <p>Grab something easy after a full day out, with familiar food options, local restaurants, snacks, LCBO, and convenience stops close by.</p>
+        </article>
+        <article class="return-card">
+          <ImageFrame src={siteImages.exploreNearby.poolReturn} alt="Seasonal pool at Wiarton Willys Inn" square />
+          <h3>Seasonal Pool</h3>
+          <p>Cool off during warmer months after a full day exploring the area.</p>
+        </article>
+        <article class="return-card">
+          <ImageFrame src={siteImages.exploreNearby.roomReturn} alt="Updated room at Wiarton Willys Inn" square />
+          <h3>Clean, Updated Rooms</h3>
+          <p>A fresh, comfortable room is ready when you’re ready to call it a day.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Stay Close to the Places You Came to See."
+    copy="With Sauble Beach, Tobermory, Bluewater Park, Bruce Caves, and local trails within easy reach, Wiarton Willys Inn makes a practical home base for your trip."
+    primaryLabel="View Rooms"
+    primaryHref="/rooms"
+    primaryTrack="view-rooms"
+    secondaryLabel="Book Direct"
+    secondaryHref={siteConfig.bookingUrl}
+    secondaryTrack="book-direct"
+  />
+</BaseLayout>

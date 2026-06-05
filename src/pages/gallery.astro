@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { seo } from "../data/seo.js";
+
+const meta = seo.gallery;
+---
+
+<BaseLayout title={meta.title} description={meta.description} canonicalPath="/see-our-property">
+  <section class="section not-found">
+    <div class="container cta-strip">
+      <p class="eyebrow">Redirect</p>
+      <h1>A Look Around Wiarton Willys Inn</h1>
+      <p>This gallery has moved to See Our Property.</p>
+      <div class="button-row">
+        <a class="btn btn-primary" href="/see-our-property">See Our Property</a>
+      </div>
+    </div>
+  </section>
+  <script is:inline>
+    window.location.replace("/see-our-property");
+  </script>
+</BaseLayout>

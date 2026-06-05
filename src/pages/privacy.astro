@@ -1,0 +1,54 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import { siteImages } from "../data/siteImages.js";
+import { seo } from "../data/seo.js";
+import { breadcrumbSchema, webpageSchema } from "../data/schema.js";
+
+const meta = seo.privacy;
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Privacy", href: "/privacy" },
+];
+const schema = [
+  breadcrumbSchema(breadcrumbs),
+  webpageSchema({ title: meta.title, description: meta.description, path: "/privacy" }),
+];
+---
+
+<PageLayout
+  title={meta.title}
+  description={meta.description}
+  h1={meta.h1}
+  eyebrow="Privacy"
+  copy="This page explains how basic website information may be used when you visit Wiarton Willys Inn online."
+  image={siteImages.footer.property}
+  imageAlt="Wiarton Willys Inn property"
+  breadcrumbs={breadcrumbs}
+  schema={schema}
+  canonicalPath="/privacy"
+>
+  <section class="section">
+    <div class="container warm-panel">
+      <section class="policy-section">
+        <h2>Website Analytics</h2>
+        <p>Wiarton Willys Inn may use basic website analytics to understand how visitors use the website, which pages are viewed, and which booking or contact links are clicked. Analytics help us improve the website and make it easier for guests to find useful information.</p>
+      </section>
+      <section class="policy-section">
+        <h2>Click Tracking</h2>
+        <p>The website may track clicks on Book Direct, phone, email, room, explore, contact, mobile sticky CTA, Channex outbound, and long-term stay call links. If no analytics ID is configured, the site continues to work without sending analytics events.</p>
+      </section>
+      <section class="policy-section">
+        <h2>Phone, Email, and Booking Links</h2>
+        <p>If you call or email us, we may use the information you provide to answer your questions, manage your stay, or help with booking-related details. Direct bookings may open Channex, a third-party booking platform, where their own privacy practices may apply.</p>
+      </section>
+      <section class="policy-section">
+        <h2>Personal Data</h2>
+        <p>Wiarton Willys Inn does not sell personal data. We only use guest information for practical stay, booking, communication, and service purposes.</p>
+      </section>
+      <section class="policy-section">
+        <h2>Privacy Questions</h2>
+        <p>For privacy questions, email <a href="mailto:rest@wiartonwillys.com" data-track="email">rest@wiartonwillys.com</a>.</p>
+      </section>
+    </div>
+  </section>
+</PageLayout>

@@ -1,0 +1,3 @@
+# see our property / clean updated bathrooms / extra bathroom gallery photos
+
+Place the approved photo for `see-our-property/clean-updated-bathrooms/extra-bathroom-gallery-photos` in this folder. Suggested filename: `bathroom.webp`. Use descriptive WebP filenames for additional images, such as `gallery-01.webp` or `wiarton-willys-inn-fire-pit-outdoor-space.webp`. Keep photos polished, warm, and booking-helpful.

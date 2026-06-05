@@ -1,0 +1,33 @@
+---
+import { siteConfig } from "../data/siteConfig.js";
+
+const {
+  title,
+  copy,
+  primaryLabel = "Book Direct",
+  primaryHref = siteConfig.bookingUrl,
+  primaryTrack = "book-direct",
+  secondaryLabel = "Call Us",
+  secondaryHref = siteConfig.phoneLink,
+  secondaryTrack = "call",
+} = Astro.props;
+---
+
+<section class="section-tight">
+  <div class="container">
+    <div class="cta-strip">
+      <h2>{title}</h2>
+      <p>{copy}</p>
+      <div class="button-row">
+        <a class="btn btn-primary" href={primaryHref} rel={primaryHref.startsWith("http") ? "noopener noreferrer" : undefined} data-track={primaryTrack}>
+          {primaryLabel}
+        </a>
+        {secondaryLabel && (
+          <a class="btn btn-secondary" href={secondaryHref} data-track={secondaryTrack}>
+            {secondaryLabel}
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

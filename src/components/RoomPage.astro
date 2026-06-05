@@ -1,0 +1,121 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "./Breadcrumbs.astro";
+import BackLink from "./BackLink.astro";
+import ImageFrame from "./ImageFrame.astro";
+import RoomQuickFacts from "./RoomQuickFacts.astro";
+import RoomCTA from "./RoomCTA.astro";
+import PetCallout from "./PetCallout.astro";
+import RoomCard from "./RoomCard.astro";
+import { siteConfig } from "../data/siteConfig.js";
+import { seo } from "../data/seo.js";
+import { roomCards } from "../data/rooms.js";
+import { breadcrumbSchema, roomSchema, webpageSchema } from "../data/schema.js";
+
+const { room } = Astro.props;
+const meta = seo[room.seoKey];
+const path = `/rooms/${room.slug}`;
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Rooms", href: "/rooms" },
+  { label: room.title, href: path },
+];
+const relatedCards = room.related.map((slug) => roomCards.find((card) => card.slug === slug)).filter(Boolean);
+const schema = [
+  breadcrumbSchema(breadcrumbs),
+  roomSchema(room, room.images[0]?.src),
+  webpageSchema({ title: meta.title, description: meta.description, path }),
+];
+---
+
+<BaseLayout title={meta.title} description={meta.description} canonicalPath={path} image={room.images[0]?.src} schema={schema} pageType="room">
+  <section class="hero hero--page">
+    <div class="hero__media">
+      <ImageFrame src={room.images[0]?.src} alt={room.images[0]?.alt} loading="eager" fetchpriority="high" />
+    </div>
+    <div class="container hero__content">
+      <p class="eyebrow">Rooms at Wiarton Willys Inn</p>
+      <h1>{meta.h1}</h1>
+      <p class="lead">{room.intro}</p>
+      <div class="hero__badges" aria-label={`${room.title} key details`}>
+        <span>{room.sleeps}</span>
+        <span>{room.beds}</span>
+        <span>{room.petStatus}</span>
+      </div>
+      <div class="button-row">
+        <a class="btn btn-primary" href={siteConfig.bookingUrl} rel="noopener noreferrer" data-track="book-direct">Book Direct</a>
+        <a class="btn btn-secondary" href={siteConfig.phoneLink} data-track="call">Call Us</a>
+      </div>
+    </div>
+  </section>
+
+  <Breadcrumbs items={breadcrumbs} />
+  <BackLink fallback="/rooms" label="Back to Rooms" />
+
+  <section class="section">
+    <div class="container room-detail">
+      <div class="room-detail__main">
+        <p class="eyebrow">Is This Room Right?</p>
+        <h2>{room.title}</h2>
+        <p class="lead">{room.description}</p>
+        <div class="warm-panel">
+          <h3>Best for</h3>
+          <p>{room.bestFor}</p>
+        </div>
+        {room.occupancyNote && (
+          <div class="warm-panel">
+            <h3>Occupancy Note</h3>
+            <p>{room.occupancyNote}</p>
+          </div>
+        )}
+        {room.petCallout ? (
+          <PetCallout title={room.petCallout.title} copy={room.petCallout.copy} button={room.petCallout.button} />
+        ) : (
+          <div class="warm-panel">
+            <h3>Pet Note</h3>
+            <p>{room.petNote}</p>
+          </div>
+        )}
+      </div>
+      <aside class="room-detail__side" aria-label={`${room.title} quick facts and booking`}>
+        <RoomQuickFacts facts={room.facts} />
+        <div class="warm-panel">
+          <h3>Room Amenities</h3>
+          <ul class="amenity-list">
+            {room.amenities.map((amenity) => <li>{amenity}</li>)}
+          </ul>
+        </div>
+        <RoomCTA />
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">A Closer Look</p>
+        <h2>Room Photos</h2>
+        <p class="lead">Photos are organized so you can quickly understand the room, sleeping setup, bathroom, and practical in-room essentials.</p>
+      </div>
+      <div class="room-gallery-strip">
+        {room.images.map((image) => (
+          <ImageFrame src={image.src} alt={image.alt} wide>
+            <figcaption class="gallery-item__caption">{image.caption}</figcaption>
+          </ImageFrame>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Compare Rooms</p>
+        <h2>Related Rooms</h2>
+      </div>
+      <div class="room-grid">
+        {relatedCards.map((card) => <RoomCard room={card} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

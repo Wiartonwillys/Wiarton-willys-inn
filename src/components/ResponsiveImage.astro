@@ -1,0 +1,36 @@
+---
+import { placeholderImage } from "../data/siteImages.js";
+import { existsSync } from "node:fs";
+import path from "node:path";
+
+const {
+  src,
+  alt = "",
+  class: className = "",
+  loading = "lazy",
+  fetchpriority,
+  width,
+  height,
+  sizes,
+} = Astro.props;
+
+const requestedSrc = src || placeholderImage;
+const localFile = requestedSrc.startsWith("/")
+  ? path.join(process.cwd(), "public", requestedSrc.slice(1))
+  : "";
+const imageSrc = localFile && existsSync(localFile) ? requestedSrc : placeholderImage;
+const fallback = `this.onerror=null;this.src='${placeholderImage}';this.classList.add('img-placeholder');`;
+---
+
+<img
+  src={imageSrc}
+  alt={alt}
+  class={className}
+  loading={loading}
+  decoding="async"
+  fetchpriority={fetchpriority}
+  width={width}
+  height={height}
+  sizes={sizes}
+  onerror={fallback}
+/>

@@ -1,0 +1,126 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import ContactCard from "../components/ContactCard.astro";
+import CTASection from "../components/CTASection.astro";
+import ImageFrame from "../components/ImageFrame.astro";
+import { siteConfig } from "../data/siteConfig.js";
+import { siteImages } from "../data/siteImages.js";
+import { seo } from "../data/seo.js";
+import { breadcrumbSchema, webpageSchema } from "../data/schema.js";
+
+const meta = seo.contact;
+const directionsUrl = "https://www.google.com/maps/search/?api=1&query=200%20Berford%20Street%2C%20Wiarton%2C%20ON%20N0H%202T0";
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Contact", href: "/contact" },
+];
+const schema = [
+  breadcrumbSchema(breadcrumbs),
+  webpageSchema({ title: meta.title, description: meta.description, path: "/contact" }),
+];
+---
+
+<PageLayout
+  title={meta.title}
+  description={meta.description}
+  h1={meta.h1}
+  eyebrow="Contact"
+  copy="Call or email Wiarton Willys Inn for room options, pet-friendly availability, late arrival details, longer stays, and questions before you book."
+  image={siteImages.contact.heroMain}
+  imageAlt="Wiarton Willys Inn contact and arrival information"
+  breadcrumbs={breadcrumbs}
+  schema={schema}
+  canonicalPath="/contact"
+  pageType="contact"
+>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Phone First</p>
+        <h2>Call Us</h2>
+        <p class="lead"><a href={siteConfig.phoneLink} data-track="call">(519) 534-3907</a></p>
+      </div>
+      <div class="contact-grid">
+        <ContactCard
+          title="Call Us"
+          bestFor="Room options, pet-friendly availability, late arrivals, direct booking questions, and longer stays."
+          detail="(519) 534-3907"
+          href={siteConfig.phoneLink}
+          button="Call Now"
+          track="call"
+        />
+        <ContactCard
+          title="Email Us"
+          bestFor="General questions, group/work stay details, and non-urgent requests."
+          detail="rest@wiartonwillys.com"
+          href={siteConfig.emailLink}
+          button="Email Us"
+          track="email"
+        />
+        <ContactCard
+          title="Find Us"
+          bestFor="Directions, arrival planning, and checking the Wiarton location before you travel."
+          detail="200 Berford Street, Wiarton, ON N0H 2T0"
+          href={directionsUrl}
+          button="Get Directions"
+          external
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container split split--top">
+      <div class="warm-panel">
+        <h2>We’re Happy to Help With</h2>
+        <ul class="check-list">
+          <li>Pet-friendly room availability</li>
+          <li>Late arrivals after 11 PM</li>
+          <li>Room options for couples, families, and groups</li>
+          <li>Long-term/work stays</li>
+          <li>Direct booking questions</li>
+          <li>Local area questions</li>
+        </ul>
+      </div>
+      <div class="warm-panel">
+        <h2>Check-In & Late Arrivals</h2>
+        <p><strong>Check-in:</strong> 2:00 PM – 11:00 PM</p>
+        <p><strong>Check-out:</strong> 11:00 AM</p>
+        <p><strong>Late arrivals:</strong> Arriving after 11:00 PM? Please call ahead, confirm your arrival time, and complete payment before arrival so we can coordinate your check-in smoothly.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div class="split__content">
+        <p class="eyebrow">Find Us in Wiarton</p>
+        <h2>200 Berford Street, Wiarton, ON N0H 2T0</h2>
+        <p class="lead">Located on Berford Street in Wiarton, with quick access to food, essentials, <a href="/explore/bluewater-park">Bluewater Park</a>, <a href="/explore/sauble-beach">Sauble Beach</a>, <a href="/explore/tobermory">Tobermory</a>, and Bruce Peninsula day trips.</p>
+        <div class="button-row">
+          <a class="btn btn-primary" href={directionsUrl} rel="noopener noreferrer">Get Directions</a>
+          <a class="btn btn-secondary" href={siteConfig.phoneLink} data-track="call">Call Us</a>
+        </div>
+      </div>
+      <div class="contact-map">
+        <ImageFrame src={siteImages.contact.location} alt="Wiarton location near Wiarton Willys Inn" wide />
+        <div class="contact-map__box">
+          <div>
+            <h3>Google Directions</h3>
+            <p>Tap for directions to Wiarton Willys Inn from your current location.</p>
+            <p><a href={directionsUrl} rel="noopener noreferrer">Open directions</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="We’re Here to Help"
+    copy="Whether you’re choosing a room, asking about pet-friendly availability, planning a late arrival, or checking on longer stays, give us a call and we’ll help you sort it out."
+    primaryLabel="Call Us"
+    primaryHref={siteConfig.phoneLink}
+    primaryTrack="call"
+    secondaryLabel=""
+  />
+</PageLayout>

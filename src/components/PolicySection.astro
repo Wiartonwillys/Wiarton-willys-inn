@@ -1,0 +1,15 @@
+---
+import { siteConfig } from "../data/siteConfig.js";
+
+const { section } = Astro.props;
+---
+
+<section class="policy-section" id={section.id} aria-labelledby={`${section.id}-title`}>
+  <h2 id={`${section.id}-title`}>{section.title}</h2>
+  {section.body.map((paragraph) => <p>{paragraph}</p>)}
+  {section.cta && (
+    <div>
+      <a class="btn btn-secondary" href={siteConfig.phoneLink} data-track="call">{section.cta}</a>
+    </div>
+  )}
+</section>

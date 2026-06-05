@@ -1,0 +1,12 @@
+---
+import { siteConfig } from "../data/siteConfig.js";
+---
+
+<div class="cta-strip">
+  <h2>Ready to Book This Room?</h2>
+  <p>Book direct online or call Wiarton Willys Inn if you have questions about room fit, arrivals, pets, or longer stays.</p>
+  <div class="button-row">
+    <a class="btn btn-primary" href={siteConfig.bookingUrl} rel="noopener noreferrer" data-track="book-direct">Book Direct</a>
+    <a class="btn btn-secondary" href={siteConfig.phoneLink} data-track="call">Call Us</a>
+  </div>
+</div>

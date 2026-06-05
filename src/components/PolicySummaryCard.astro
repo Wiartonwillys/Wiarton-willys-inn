@@ -1,0 +1,8 @@
+---
+const { title, copy, href } = Astro.props;
+---
+
+<a class="policy-card" href={href}>
+  <h3>{title}</h3>
+  <p>{copy}</p>
+</a>

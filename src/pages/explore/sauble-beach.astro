@@ -1,0 +1,8 @@
+---
+import DestinationPage from "../../components/DestinationPage.astro";
+import { getDestinationBySlug } from "../../data/exploreDestinations.js";
+
+const destination = getDestinationBySlug("sauble-beach");
+---
+
+<DestinationPage destination={destination} />

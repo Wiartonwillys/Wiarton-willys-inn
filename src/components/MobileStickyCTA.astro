@@ -1,0 +1,12 @@
+---
+import { siteConfig } from "../data/siteConfig.js";
+---
+
+<div class="mobile-sticky-cta" aria-label="Quick contact options">
+  <a class="btn mobile-sticky-cta__call" href={siteConfig.phoneLink} data-track="mobile-sticky-call">
+    Call
+  </a>
+  <a class="btn mobile-sticky-cta__book" href={siteConfig.bookingUrl} rel="noopener noreferrer" data-track="mobile-sticky-book">
+    Book Direct
+  </a>
+</div>

@@ -1,0 +1,8 @@
+---
+import RoomPage from "../../components/RoomPage.astro";
+import { getRoomBySlug } from "../../data/rooms.js";
+
+const room = getRoomBySlug("family-room");
+---
+
+<RoomPage room={room} />

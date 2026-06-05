@@ -1,0 +1,43 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import GalleryGrid from "../components/GalleryGrid.astro";
+import CTASection from "../components/CTASection.astro";
+import { siteImages } from "../data/siteImages.js";
+import { galleryCategories, galleryItems } from "../data/gallery.js";
+import { seo } from "../data/seo.js";
+import { breadcrumbSchema, webpageSchema } from "../data/schema.js";
+
+const meta = seo.gallery;
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "See Our Property", href: "/see-our-property" },
+];
+const schema = [
+  breadcrumbSchema(breadcrumbs),
+  webpageSchema({ title: meta.title, description: meta.description, path: "/see-our-property" }),
+];
+---
+
+<PageLayout
+  title={meta.title}
+  description={meta.description}
+  h1={meta.h1}
+  eyebrow="Photos"
+  copy="Browse our outdoor spaces, fire pit areas, rooms, bathrooms, seasonal pool, and nearby places to visit around Wiarton and the Bruce Peninsula."
+  image={siteImages.seeOurProperty.outdoorFeatured}
+  imageAlt="Outdoor spaces at Wiarton Willys Inn"
+  breadcrumbs={breadcrumbs}
+  schema={schema}
+  canonicalPath="/see-our-property"
+>
+  <section class="section">
+    <div class="container">
+      <GalleryGrid categories={galleryCategories} items={galleryItems} />
+    </div>
+  </section>
+
+  <CTASection
+    title="Want Help Choosing a Room?"
+    copy="Call Wiarton Willys Inn for room questions, pet-friendly availability, late arrivals, longer stays, and direct booking help."
+  />
+</PageLayout>

@@ -1,0 +1,85 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "./Breadcrumbs.astro";
+import BackLink from "./BackLink.astro";
+import DestinationHero from "./DestinationHero.astro";
+import ImageFrame from "./ImageFrame.astro";
+import CTASection from "./CTASection.astro";
+import { seo } from "../data/seo.js";
+import { breadcrumbSchema, webpageSchema } from "../data/schema.js";
+
+const { destination } = Astro.props;
+const meta = seo[destination.seoKey];
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Explore Nearby", href: "/explore" },
+  { label: destination.title, href: destination.href },
+];
+const schema = [
+  breadcrumbSchema(breadcrumbs),
+  webpageSchema({ title: meta.title, description: meta.description, path: destination.href }),
+];
+---
+
+<BaseLayout title={meta.title} description={meta.description} canonicalPath={destination.href} image={destination.heroImage} schema={schema} pageType="explore">
+  <DestinationHero
+    title={destination.title}
+    h1={destination.title}
+    subtitle={destination.subtitle}
+    distance={destination.distance}
+    image={destination.heroImage}
+  />
+
+  <Breadcrumbs items={breadcrumbs} />
+  <BackLink fallback="/explore" label="Back to Explore" />
+
+  <section class="section">
+    <div class="container split split--top">
+      <div class="split__content">
+        <p class="eyebrow">Why Go</p>
+        <h2>{destination.title}</h2>
+        <p class="lead">{destination.whyGo}</p>
+        <div class="warm-panel">
+          <h3>Good for</h3>
+          <ul class="pill-list" aria-label={`${destination.title} good for`}>
+            {destination.pageTags.map((tag) => <li class="tag">{tag}</li>)}
+          </ul>
+        </div>
+        <div class="warm-panel">
+          <h3>Nearby Note</h3>
+          <p>{destination.nearbyNote}</p>
+        </div>
+      </div>
+      <aside class="warm-panel">
+        <h2>Best Things to Do</h2>
+        <ul class="check-list">
+          {destination.bestThings.map((thing) => <li>{thing}</li>)}
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Nearby Photos</p>
+        <h2>A Quick Look Before You Go</h2>
+      </div>
+      <div class="room-gallery-strip">
+        <ImageFrame src={destination.heroImage} alt={`Nearby ${destination.title}`} wide />
+        {destination.gallery.map((image) => <ImageFrame src={image.src} alt={image.alt} wide />)}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Stay Nearby at Wiarton Willys Inn"
+    copy="After exploring, come back to a practical Wiarton home base with updated rooms, outdoor space, fire pits, and easy access to local food and essentials."
+    primaryLabel="View Rooms"
+    primaryHref="/rooms"
+    primaryTrack="view-rooms"
+    secondaryLabel="Book Direct"
+    secondaryHref="https://ibe.channex.io/wiartonwillys"
+    secondaryTrack="book-direct"
+  />
+</BaseLayout>

@@ -1,0 +1,13 @@
+---
+import { siteConfig } from "../data/siteConfig.js";
+
+const { title, copy, button = "Call About Pet-Friendly Rooms" } = Astro.props;
+---
+
+<aside class="pet-callout" aria-labelledby="pet-callout-title">
+  <h2 id="pet-callout-title">{title}</h2>
+  <p>{copy}</p>
+  <div>
+    <a class="btn btn-secondary" href={siteConfig.phoneLink} data-track="call">{button}</a>
+  </div>
+</aside>

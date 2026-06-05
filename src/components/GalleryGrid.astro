@@ -1,0 +1,116 @@
+---
+import GalleryFilter from "./GalleryFilter.astro";
+import GalleryLightbox from "./GalleryLightbox.astro";
+import ResponsiveImage from "./ResponsiveImage.astro";
+import { placeholderImage } from "../data/siteImages.js";
+import { existsSync } from "node:fs";
+import path from "node:path";
+
+const { categories = [], items = [] } = Astro.props;
+const imageExists = (src) => src?.startsWith("/") && existsSync(path.join(process.cwd(), "public", src.slice(1)));
+const visibleItems = items.filter((item) => imageExists(item.src));
+const activeCategoryValues = new Set(visibleItems.map((item) => item.category));
+const visibleCategories = categories.filter((category) => category.value === "all" || activeCategoryValues.has(category.value));
+---
+
+<div data-gallery>
+  <GalleryFilter categories={visibleCategories} />
+  <div class="gallery-grid">
+    {visibleItems.map((item, index) => (
+      <button
+        class:list={["gallery-item", item.featured && "is-featured"]}
+        type="button"
+        data-gallery-item
+        data-category={item.category}
+        data-index={index}
+        data-full={item.full || item.src}
+        data-caption={item.caption}
+        data-alt={item.alt}
+      >
+        <ResponsiveImage src={item.src} alt={item.alt} />
+        <span class="gallery-item__caption">{item.caption}</span>
+      </button>
+    ))}
+  </div>
+  <GalleryLightbox />
+</div>
+
+<script is:inline define:vars={{ placeholderImage }}>
+  const galleryRoot = document.querySelector("[data-gallery]");
+  if (galleryRoot) {
+    const filters = Array.from(galleryRoot.querySelectorAll("[data-gallery-filter]"));
+    const items = Array.from(galleryRoot.querySelectorAll("[data-gallery-item]"));
+    const lightbox = galleryRoot.querySelector("[data-lightbox]");
+    const image = galleryRoot.querySelector("[data-lightbox-image]");
+    const caption = galleryRoot.querySelector("[data-lightbox-caption]");
+    const closeButton = galleryRoot.querySelector("[data-lightbox-close]");
+    const nextButton = galleryRoot.querySelector("[data-lightbox-next]");
+    const prevButton = galleryRoot.querySelector("[data-lightbox-prev]");
+    let activeItems = items;
+    let currentIndex = 0;
+    let lastFocus = null;
+
+    const setFilter = (value) => {
+      filters.forEach((button) => {
+        const active = button.dataset.galleryFilter === value;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+      items.forEach((item) => {
+        item.hidden = value !== "all" && item.dataset.category !== value;
+      });
+      activeItems = items.filter((item) => !item.hidden);
+    };
+
+    const showItem = (item) => {
+      if (!item || !lightbox || !image || !caption) return;
+      currentIndex = activeItems.indexOf(item);
+      image.onerror = () => {
+        image.onerror = null;
+        image.src = placeholderImage;
+      };
+      image.src = item.dataset.full || placeholderImage;
+      image.alt = item.dataset.alt || "";
+      caption.textContent = item.dataset.caption || "";
+    };
+
+    const openLightbox = (item) => {
+      if (!lightbox) return;
+      lastFocus = document.activeElement;
+      showItem(item);
+      lightbox.hidden = false;
+      lightbox.classList.add("is-open");
+      closeButton?.focus();
+      document.body.classList.add("mobile-menu-open");
+    };
+
+    const closeLightbox = () => {
+      if (!lightbox) return;
+      lightbox.classList.remove("is-open");
+      lightbox.hidden = true;
+      document.body.classList.remove("mobile-menu-open");
+      lastFocus?.focus?.();
+    };
+
+    const move = (direction) => {
+      if (!activeItems.length) return;
+      currentIndex = (currentIndex + direction + activeItems.length) % activeItems.length;
+      showItem(activeItems[currentIndex]);
+    };
+
+    filters.forEach((button) => button.addEventListener("click", () => setFilter(button.dataset.galleryFilter || "all")));
+    items.forEach((item) => item.addEventListener("click", () => openLightbox(item)));
+    closeButton?.addEventListener("click", closeLightbox);
+    nextButton?.addEventListener("click", () => move(1));
+    prevButton?.addEventListener("click", () => move(-1));
+    lightbox?.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (!lightbox || lightbox.hidden) return;
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowRight") move(1);
+      if (event.key === "ArrowLeft") move(-1);
+    });
+  }
+</script>

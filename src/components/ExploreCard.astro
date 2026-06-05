@@ -1,0 +1,19 @@
+---
+import ResponsiveImage from "./ResponsiveImage.astro";
+
+const { destination } = Astro.props;
+---
+
+<a class="explore-card" href={destination.href}>
+  <div class="explore-card__image">
+    <ResponsiveImage src={destination.cardImage} alt={`Nearby ${destination.title}`} />
+  </div>
+  <div class="explore-card__body">
+    <h3>{destination.title}</h3>
+    <p>{destination.cardCopy}</p>
+    <div class="mini-facts">
+      {destination.tags.map((tag) => <span>{tag}</span>)}
+    </div>
+    <span class="btn btn-link">Explore →</span>
+  </div>
+</a>

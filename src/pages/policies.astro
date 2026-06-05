@@ -1,0 +1,66 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PolicySummaryCard from "../components/PolicySummaryCard.astro";
+import PolicySection from "../components/PolicySection.astro";
+import CTASection from "../components/CTASection.astro";
+import { siteConfig } from "../data/siteConfig.js";
+import { siteImages } from "../data/siteImages.js";
+import { policySummaries, policySections } from "../data/policies.js";
+import { seo } from "../data/seo.js";
+import { breadcrumbSchema, webpageSchema } from "../data/schema.js";
+
+const meta = seo.policies;
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Policies", href: "/policies" },
+];
+const schema = [
+  breadcrumbSchema(breadcrumbs),
+  webpageSchema({ title: meta.title, description: meta.description, path: "/policies" }),
+];
+---
+
+<PageLayout
+  title={meta.title}
+  description={meta.description}
+  h1={meta.h1}
+  eyebrow="Guest Info"
+  copy="We want every stay to be clear, comfortable, and easy to manage. Please review the key policies below before booking, especially if you’re traveling with pets, arriving late, or planning a longer stay."
+  image={siteImages.policies.hero}
+  imageAlt="Wiarton Willys Inn policy information"
+  breadcrumbs={breadcrumbs}
+  schema={schema}
+  canonicalPath="/policies"
+>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">At a Glance</p>
+        <h2>Key Policies Before You Book</h2>
+      </div>
+      <div class="policy-summary-grid">
+        {policySummaries.map((summary) => <PolicySummaryCard title={summary.title} copy={summary.copy} href={summary.href} />)}
+      </div>
+      <ul class="policy-nav" aria-label="Policy jump links">
+        {policySections.map((section) => (
+          <li><a class="btn btn-ghost" href={`#${section.id}`}>{section.title}</a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container warm-panel">
+      {policySections.map((section) => <PolicySection section={section} />)}
+    </div>
+  </section>
+
+  <CTASection
+    title="Questions About Our Policies?"
+    copy="Questions about our policies? Call us before booking — we’re happy to help with pets, late arrivals, longer stays, pool availability, and any other questions you may have."
+    primaryLabel="Call Us"
+    primaryHref={siteConfig.phoneLink}
+    primaryTrack="call"
+    secondaryLabel=""
+  />
+</PageLayout>

@@ -1,0 +1,16 @@
+---
+const { categories = [] } = Astro.props;
+---
+
+<div class="gallery-toolbar" role="toolbar" aria-label="Gallery filters">
+  {categories.map((category, index) => (
+    <button
+      class:list={["gallery-filter", index === 0 && "is-active"]}
+      type="button"
+      data-gallery-filter={category.value}
+      aria-pressed={index === 0 ? "true" : "false"}
+    >
+      {category.label}
+    </button>
+  ))}
+</div>

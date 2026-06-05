@@ -1,0 +1,19 @@
+---
+import ResponsiveImage from "./ResponsiveImage.astro";
+
+const { room } = Astro.props;
+---
+
+<a class="room-card" href={room.href}>
+  <div class="room-card__image">
+    <ResponsiveImage src={room.image} alt={room.alt} />
+  </div>
+  <div class="room-card__body">
+    <h3>{room.title}</h3>
+    <p>{room.summary}</p>
+    <div class="mini-facts" aria-label={`${room.title} quick facts`}>
+      {room.facts.map((fact) => <span>{fact}</span>)}
+    </div>
+    <span class="btn btn-link">View Room</span>
+  </div>
+</a>

@@ -1,0 +1,7 @@
+---
+const { facts = [] } = Astro.props;
+---
+
+<ul class="quick-facts">
+  {facts.map((fact) => <li>{fact}</li>)}
+</ul>

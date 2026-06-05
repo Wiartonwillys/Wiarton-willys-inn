@@ -1,0 +1,101 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import BackLink from "../components/BackLink.astro";
+import ImageFrame from "../components/ImageFrame.astro";
+import CTASection from "../components/CTASection.astro";
+import { siteConfig } from "../data/siteConfig.js";
+import { siteImages } from "../data/siteImages.js";
+import { seo } from "../data/seo.js";
+import { breadcrumbSchema, webpageSchema } from "../data/schema.js";
+
+const meta = seo.longTerm;
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Long-Term & Work Stays", href: "/long-term-stays" },
+];
+const schema = [
+  breadcrumbSchema(breadcrumbs),
+  webpageSchema({ title: meta.title, description: meta.description, path: "/long-term-stays" }),
+];
+---
+
+<BaseLayout title={meta.title} description={meta.description} canonicalPath="/long-term-stays" image={siteImages.longTerm.heroMain} schema={schema}>
+  <section class="hero hero--page">
+    <div class="hero__media">
+      <ImageFrame src={siteImages.longTerm.heroMain} alt="Long-term and work stays in Wiarton" loading="eager" fetchpriority="high" />
+    </div>
+    <div class="container hero__content">
+      <p class="eyebrow">Call First</p>
+      <h1>{meta.h1}</h1>
+      <p class="lead">Need a practical place to stay in Wiarton for work, crews, contractors, organizations, or a longer visit? Call Wiarton Willys Inn directly to talk through availability, timing, group size, and the best possible rate for your stay.</p>
+      <div class="button-row">
+        <a class="btn btn-primary" href={siteConfig.phoneLink} data-track="long-term-call">Call About Long-Term Stays</a>
+      </div>
+    </div>
+  </section>
+
+  <Breadcrumbs items={breadcrumbs} />
+  <BackLink />
+
+  <section class="section">
+    <div class="container split split--top">
+      <div class="split__content">
+        <p class="lead">Longer stays can vary depending on the season, room availability, length of stay, and type of booking. During the off-season, we’re often able to offer more flexible options for monthly or extended stays. During busy summer periods, availability and pricing can be more limited, so calling us directly is the best way to see what’s possible.</p>
+        <p class="lead">Tell us what you need, how long you’re staying, and how many rooms or guests you’re planning for. We’ll do our best to help with a practical setup that works for your stay.</p>
+      </div>
+      <ImageFrame src={siteImages.longTerm.room} alt="Practical room setup for workers and longer stays" wide />
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Who This Is For</p>
+        <h2>Practical Longer Stays</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card"><h3>Workers & crews</h3><p>Call us with dates, room count, and timing.</p></article>
+        <article class="feature-card"><h3>Contractors</h3><p>Practical Wiarton accommodations for project-based stays.</p></article>
+        <article class="feature-card"><h3>Organizations</h3><p>Talk through group needs directly with the property.</p></article>
+        <article class="feature-card"><h3>Monthly guests</h3><p>Off-season options may be more flexible depending on availability.</p></article>
+        <article class="feature-card"><h3>Off-season stays</h3><p>Longer stays are often easier to discuss outside the busiest summer periods.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split split--top">
+      <div class="warm-panel">
+        <h2>Why Call Us Directly</h2>
+        <ul class="check-list">
+          <li>Availability changes</li>
+          <li>Room setup depends on dates, group size, and guest needs</li>
+          <li>Rates depend on season, length of stay, and type of booking</li>
+          <li>Off-season has more flexibility</li>
+          <li>Summer availability and pricing are tighter</li>
+        </ul>
+      </div>
+      <div class="warm-panel">
+        <h2>Why Stay with Wiarton Willys Inn</h2>
+        <ul class="check-list">
+          <li>Practical rooms</li>
+          <li>Free parking</li>
+          <li>In-room essentials such as mini fridge and microwave</li>
+          <li>Wiarton location close to shops, restaurants, essentials, and local work sites</li>
+          <li>Direct communication</li>
+          <li>Flexible discussion for longer stays</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Call About Long-Term Stays"
+    copy="Tell us your dates, group size, room needs, and length of stay. We’ll talk through what may be possible."
+    primaryLabel="Call About Long-Term Stays"
+    primaryHref={siteConfig.phoneLink}
+    primaryTrack="long-term-call"
+    secondaryLabel=""
+  />
+</BaseLayout>

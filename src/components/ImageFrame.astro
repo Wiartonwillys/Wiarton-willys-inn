@@ -1,0 +1,30 @@
+---
+import ResponsiveImage from "./ResponsiveImage.astro";
+
+const {
+  src,
+  alt,
+  class: className = "",
+  imageClass = "",
+  loading = "lazy",
+  fetchpriority,
+  wide = false,
+  tall = false,
+  square = false,
+} = Astro.props;
+
+const frameClasses = [
+  "image-frame",
+  wide && "image-frame--wide",
+  tall && "image-frame--tall",
+  square && "image-frame--square",
+  className,
+]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<figure class={frameClasses}>
+  <ResponsiveImage src={src} alt={alt} class={imageClass} loading={loading} fetchpriority={fetchpriority} />
+  <slot />
+</figure>

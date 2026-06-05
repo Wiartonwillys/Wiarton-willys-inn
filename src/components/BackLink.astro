@@ -1,0 +1,24 @@
+---
+const { fallback = "/", label = "Back" } = Astro.props;
+---
+
+<nav class="back-link-wrap" aria-label="Back navigation">
+  <a class="back-link" href={fallback} data-back-link>
+    <span class="back-link__icon" aria-hidden="true">←</span>
+    <span>{label}</span>
+  </a>
+</nav>
+
+<script is:inline>
+  document.querySelectorAll("[data-back-link]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      if (!document.referrer || window.history.length <= 1) return;
+
+      const referrer = new URL(document.referrer);
+      if (referrer.origin !== window.location.origin) return;
+
+      event.preventDefault();
+      window.history.back();
+    });
+  });
+</script>

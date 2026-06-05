@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { seo } from "../data/seo.js";
+
+const meta = seo.notFound;
+---
+
+<BaseLayout title={meta.title} description={meta.description} canonicalPath="/404">
+  <section class="section not-found">
+    <div class="container cta-strip">
+      <p class="eyebrow">Page Not Found</p>
+      <h1>{meta.h1}</h1>
+      <p class="lead">Looks like this page wandered off toward the Bruce Peninsula.</p>
+      <div class="button-row">
+        <a class="btn btn-primary" href="/">Back Home</a>
+        <a class="btn btn-secondary" href="/rooms">View Rooms</a>
+        <a class="btn btn-secondary" href="/contact">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

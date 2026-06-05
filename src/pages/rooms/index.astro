@@ -1,0 +1,82 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import BackLink from "../../components/BackLink.astro";
+import RoomCard from "../../components/RoomCard.astro";
+import CTASection from "../../components/CTASection.astro";
+import ImageFrame from "../../components/ImageFrame.astro";
+import { seo } from "../../data/seo.js";
+import { roomCards, rooms } from "../../data/rooms.js";
+import { siteImages } from "../../data/siteImages.js";
+import { breadcrumbSchema, webpageSchema } from "../../data/schema.js";
+
+const meta = seo.rooms;
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Rooms", href: "/rooms" },
+];
+const schema = [
+  breadcrumbSchema(breadcrumbs),
+  webpageSchema({ title: meta.title, description: meta.description, path: "/rooms" }),
+];
+---
+
+<BaseLayout title={meta.title} description={meta.description} canonicalPath="/rooms" image={siteImages.rooms.overviewFamily} schema={schema}>
+  <section class="hero hero--page">
+    <div class="hero__media">
+      <ImageFrame src={siteImages.rooms.overviewFamily} alt="Rooms at Wiarton Willys Inn" loading="eager" fetchpriority="high" />
+    </div>
+    <div class="container hero__content">
+      <p class="eyebrow">Rooms</p>
+      <h1>{meta.h1}</h1>
+      <p class="lead">Compare practical room options for couples, solo travellers, families, groups, workers, and Bruce Peninsula day trips from Wiarton.</p>
+    </div>
+  </section>
+
+  <Breadcrumbs items={breadcrumbs} />
+  <BackLink />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Compare Rooms</p>
+        <h2>Find the Right Fit</h2>
+        <p class="lead">Each room includes practical essentials like a private bathroom, mini fridge, microwave, TV, AC/heat, and free parking. Pet status varies by room type.</p>
+      </div>
+      <div class="room-grid">
+        {roomCards.map((room) => <RoomCard room={room} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Room Facts</p>
+        <h2>Pet Status and Sleeping Setups</h2>
+      </div>
+      <div class="feature-grid">
+        {rooms.map((room) => (
+          <article class="feature-card">
+            <h3>{room.title}</h3>
+            <p><strong>{room.sleeps}</strong></p>
+            <p>{room.beds}</p>
+            <p><strong>{room.petStatus}</strong></p>
+            {room.slug === "single-queen-room" && <p>The Single Queen Room is not pet-friendly.</p>}
+            {room.slug === "family-room" && <p>Designated pet-friendly Family Rooms are limited and available by request only.</p>}
+            {room.slug === "deluxe-family-room" && <p>This room is usually not pet-friendly. Please call before booking with a pet.</p>}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Questions About Which Room to Choose?"
+    copy="Call Wiarton Willys Inn for room options, pet-friendly availability, late arrivals, longer stays, and direct booking help."
+    primaryLabel="Book Direct"
+    primaryHref="https://ibe.channex.io/wiartonwillys"
+    secondaryLabel="Call Us"
+    secondaryHref="tel:+15195343907"
+  />
+</BaseLayout>
