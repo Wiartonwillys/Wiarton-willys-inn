@@ -1,0 +1,45 @@
+name: Deploy to Web Hosting Canada
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    name: Build Astro site and upload to WHC
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out site source
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.4.0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build static site
+        run: pnpm build
+
+      - name: Upload built site to WHC
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.WHC_SSH_HOST }}
+          username: ${{ secrets.WHC_SSH_USERNAME }}
+          password: ${{ secrets.WHC_SSH_PASSWORD }}
+          port: ${{ secrets.WHC_SSH_PORT }}
+          source: "dist/*"
+          target: ${{ secrets.WHC_REMOTE_DIR }}
+          strip_components: 1
+          overwrite: true
