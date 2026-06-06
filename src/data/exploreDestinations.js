@@ -39,6 +39,10 @@ export const destinations = [
     heroImage: siteImages.exploreNearby.saubleBeachMain,
     gallery: [
       { src: siteImages.exploreNearby.saubleBeachSunset, alt: "Sunset over Lake Huron at Sauble Beach", caption: "Sauble Beach Sunset" },
+      { src: siteImages.exploreNearby.saubleBeachMainStrip, alt: "Dairy Queen and Sauble Beach main strip sign", caption: "Sauble Beach Main Strip" },
+      { src: siteImages.exploreNearby.saubleBeachShops, alt: "Outdoor shop and seating area in Sauble Beach", caption: "Sauble Beach Shops" },
+      { src: siteImages.exploreNearby.saubleBeachAdventurePark, alt: "Outdoor adventure course near Sauble Beach", caption: "Sauble Beach Adventure Park" },
+      { src: siteImages.exploreNearby.saubleBeachBeaverCarving, alt: "Small beaver carving near Sauble Beach", caption: "Sauble Beach Local Stop" },
     ],
     subtitle: "A classic beach day with sand, swimming, the strip, and some of the area’s best sunsets.",
     cardCopy: "Spend the day on the sand, swim, explore the strip, and enjoy some of the area’s best sunsets.",
