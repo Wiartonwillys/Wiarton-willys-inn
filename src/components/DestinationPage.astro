@@ -66,7 +66,6 @@ const schema = [
         <h2>A Quick Look Before You Go</h2>
       </div>
       <div class="room-gallery-strip">
-        <ImageFrame src={destination.heroImage} alt={`Nearby ${destination.title}`} wide />
         {destination.gallery.map((image) => <ImageFrame src={image.src} alt={image.alt} wide />)}
       </div>
     </div>
