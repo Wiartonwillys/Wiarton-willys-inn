@@ -166,7 +166,7 @@ const homepageRoomCards = roomCards.map((room) =>
       </div>
       <div class="big-stop-posters">
         <a class="big-stop-card big-stop-card--tobermory" href="/explore/tobermory">
-          <ImageFrame src={siteImages.exploreNearby.tobermoryCard} alt="Nearby Tobermory harbour and blue water" />
+          <ImageFrame src={siteImages.homepage.homepageTobermoryCard} alt="Nearby Tobermory harbour and blue water" />
           <div class="big-stop-card__content">
             <span>45 min drive</span>
             <strong>Tobermory</strong>
@@ -174,7 +174,7 @@ const homepageRoomCards = roomCards.map((room) =>
           </div>
         </a>
         <a class="big-stop-card big-stop-card--sauble" href="/explore/sauble-beach">
-          <ImageFrame src={siteImages.exploreNearby.saubleBeachCard} alt="Nearby Sauble Beach sunset" />
+          <ImageFrame src={siteImages.homepage.homepageSaubleBeachCard} alt="Nearby Sauble Beach sunset" />
           <div class="big-stop-card__content">
             <span>15 min drive</span>
             <strong>Sauble Beach</strong>
@@ -240,42 +240,45 @@ const homepageRoomCards = roomCards.map((room) =>
       </div>
       <div class="button-row">
         <a class="btn btn-primary" href={siteConfig.bookingUrl} rel="noopener noreferrer" data-track="book-direct">Book Direct</a>
-        <a class="btn btn-light" href={siteConfig.phoneLink} data-track="call">Call Us</a>
+        <a class="btn btn-secondary" href={siteConfig.phoneLink} data-track="call">Call Us</a>
       </div>
     </div>
   </section>
 
   <section class="section section-band">
-    <div class="container split">
-      <div class="split__content">
-        <p class="eyebrow">Longer Stays</p>
-        <h2>Long-Term & Work Stays in Wiarton</h2>
-        <p class="lead">For contractors, crews, organizations, and monthly stays, call us directly to talk through availability, timing, and the best possible rate for your stay.</p>
-        <div class="button-row">
-          <a class="btn btn-primary" href={siteConfig.phoneLink} data-track="long-term-call">Call About Long-Term Stays</a>
-          <a class="btn btn-secondary" href="/long-term-stays">View Details</a>
-        </div>
-      </div>
-      <ImageFrame src={siteImages.homepage.longTermPreview} alt="Practical room for a long-term or work stay in Wiarton" wide />
-    </div>
+    <CTASection
+      title="Long-Term & Work Stays in Wiarton"
+      copy="For contractors, crews, organizations, and monthly stays, call us directly to talk through availability, timing, and the best possible rate for your stay."
+      primaryLabel="Call About Long-Term Stays"
+      primaryHref={siteConfig.phoneLink}
+      primaryTrack="call"
+      secondaryLabel="View Details"
+      secondaryHref="/long-term-stays"
+    />
   </section>
 
   <section class="section">
-    <div class="container split split--top">
-      <div class="section-heading">
+    <div class="container narrow">
+      <div class="section-heading center">
         <p class="eyebrow">Questions</p>
         <h2>Helpful Details Before You Book</h2>
-        <p class="lead">Still have questions? Call us — we’re happy to help with room options, pet requests, late arrivals, longer stays, and any other questions you may have.</p>
-        <div class="button-row">
-          <a class="btn btn-secondary" href={siteConfig.phoneLink} data-track="call">Call Us</a>
-        </div>
       </div>
-      <FAQAccordion faqs={homepageFaqs} />
+      <FAQAccordion items={homepageFaqs} />
+      <div class="center faq-cta">
+        <p>Still have questions? Call us — we’re happy to help with room options, pet requests, late arrivals, longer stays, and any other questions you may have.</p>
+        <a class="btn btn-secondary" href={siteConfig.phoneLink} data-track="call">Call Us</a>
+      </div>
     </div>
   </section>
 
   <CTASection
     title="Ready to Plan Your Stay?"
     copy="Book direct or call Wiarton Willys Inn for room options, pet requests, late arrivals, and longer stays."
+    primaryLabel="Book Direct"
+    primaryHref={siteConfig.bookingUrl}
+    primaryTrack="book-direct"
+    secondaryLabel="Call Us"
+    secondaryHref={siteConfig.phoneLink}
+    secondaryTrack="call"
   />
 </BaseLayout>
