@@ -19,6 +19,12 @@ const schema = [
   faqSchema(homepageFaqs),
   webpageSchema({ title: meta.title, description: meta.description, path: "/" }),
 ];
+
+const homepageRoomCards = roomCards.map((room) =>
+  room.slug === "single-queen-room"
+    ? { ...room, image: siteImages.homepage.singleQueenCard, alt: "Single Queen Room bed at Wiarton Willys Inn" }
+    : room
+);
 ---
 
 <BaseLayout
@@ -76,7 +82,7 @@ const schema = [
         <p class="lead">Choose a room that fits the way you travel, from short stays to family trips and flexible sleeping arrangements near Bruce Peninsula attractions.</p>
       </div>
       <div class="room-grid">
-        {roomCards.map((room) => <RoomCard room={room} />)}
+        {homepageRoomCards.map((room) => <RoomCard room={room} />)}
       </div>
     </div>
   </section>
