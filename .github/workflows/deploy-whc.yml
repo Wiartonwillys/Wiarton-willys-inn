@@ -1,0 +1,43 @@
+name: Deploy to Web Hosting Canada
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    name: Build Astro site and upload to WHC
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out site source
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.4.0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build static site
+        run: pnpm build
+
+      - name: Upload built site to WHC
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.WHC_FTP_SERVER }}
+          username: ${{ secrets.WHC_FTP_USERNAME }}
+          password: ${{ secrets.WHC_FTP_PASSWORD }}
+          protocol: ftp
+          local-dir: ./dist/
+          server-dir: ${{ secrets.WHC_FTP_SERVER_DIR }}
