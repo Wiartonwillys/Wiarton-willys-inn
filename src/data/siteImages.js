@@ -26,6 +26,7 @@ export const siteImages = {
     singleQueenMain: "/images/rooms/single-queen-room/room/main-photo/main.webp",
     singleQueenBed: "/images/rooms/single-queen-room/room/bed-photo/main.webp",
     singleQueenBathroom: "/images/rooms/single-queen-room/bathroom/main-photo/bathroom.webp",
+    singleQueenVanity: "/images/rooms/single-queen-room/bathroom/main-photo/vanity.webp",
     singleQueenAmenity: "/images/rooms/single-queen-room/amenities/fridge-microwave-photo/main.webp",
     familyRoomMain: "/images/rooms/family-room/room/main-photo/main.webp",
     familyBeds: "/images/rooms/family-room/room/beds-photo/main.webp",

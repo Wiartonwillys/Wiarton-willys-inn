@@ -31,7 +31,7 @@ export const rooms = [
       { src: siteImages.rooms.singleQueenMain, alt: "Single Queen Room at Wiarton Willys Inn", caption: "Single Queen Room" },
       { src: siteImages.rooms.singleQueenBed, alt: "Queen bed inside the Single Queen Room", caption: "Queen Bed" },
       { src: siteImages.rooms.singleQueenBathroom, alt: "Renovated bathroom in the Single Queen Room", caption: "Updated Bathroom" },
-      { src: siteImages.rooms.singleQueenAmenity, alt: "Mini fridge and microwave in a Wiarton Willys Inn room", caption: "In-Room Essentials" },
+      { src: siteImages.rooms.singleQueenVanity, alt: "Bathroom vanity in the Single Queen Room", caption: "Bathroom Vanity" },
     ],
     related: ["family-room", "deluxe-family-room"],
   },
@@ -83,15 +83,15 @@ export const rooms = [
     sleeps: "Sleeps up to 8",
     beds: "2 Queen Beds + 2 Double-Sized Sofa Beds",
     occupancy: "8",
-    petStatus: "Usually Not Pet-Friendly",
-    petTone: "call",
+    petStatus: "Not Pet-Friendly",
+    petTone: "no-pets",
     bestFor: "Larger Families · Groups · Flexible Sleeping Arrangements · Staying Together",
     description:
       "Our Deluxe Family Room is the largest room option at Wiarton Willys Inn, designed for families and groups who want to stay together with more sleeping flexibility. It includes two queen beds, two double-sized sofa beds, a fully renovated private bathroom, and practical in-room essentials like a mini fridge, microwave, TV, and AC/heat.",
     occupancyNote:
       "Comfortably accommodates up to 6 guests, with flexible sleeping arrangements for up to 8 guests total.",
     petNote:
-      "This room is usually not pet-friendly. Guests traveling with pets should call before booking so we can confirm whether a pet-friendly room is available.",
+      "This room is not pet-friendly. Guests traveling with pets should call before booking so we can confirm whether a designated pet-friendly Family Room is available.",
     facts: [
       "Sleeps up to 8",
       "2 Queen Beds",
@@ -140,7 +140,7 @@ export const roomCards = [
     image: siteImages.rooms.overviewDeluxe,
     alt: "Deluxe Family Room near Bruce Peninsula",
     summary: "Our largest room option, made for larger families and groups staying together.",
-    facts: ["Sleeps up to 8", "2 Queen Beds + Sofa Beds", "Usually Not Pet-Friendly"],
+    facts: ["Sleeps up to 8", "2 Queen Beds + Sofa Beds", "Not Pet-Friendly"],
   },
 ];
 
