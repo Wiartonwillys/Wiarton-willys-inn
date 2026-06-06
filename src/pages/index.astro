@@ -14,7 +14,7 @@ import { breadcrumbSchema, faqSchema, motelSchema, webpageSchema } from "../data
 
 const meta = seo.home;
 const schema = [
-  motelSchema(siteImages.homepage.firePitPreview),
+  motelSchema(siteImages.homepage.heroMain),
   breadcrumbSchema([{ label: "Home", href: "/" }]),
   faqSchema(homepageFaqs),
   webpageSchema({ title: meta.title, description: meta.description, path: "/" }),
@@ -31,7 +31,7 @@ const homepageRoomCards = roomCards.map((room) =>
   title={meta.title}
   description={meta.description}
   canonicalPath="/"
-  image={siteImages.homepage.firePitPreview}
+  image={siteImages.homepage.heroMain}
   ogTitle={meta.ogTitle}
   ogDescription={meta.ogDescription}
   schema={schema}
@@ -39,7 +39,7 @@ const homepageRoomCards = roomCards.map((room) =>
 >
   <section class="hero">
     <div class="hero__media">
-      <ImageFrame src={siteImages.homepage.firePitPreview} alt="Fire pit outdoor space at Wiarton Willys Inn" loading="eager" fetchpriority="high" />
+      <ImageFrame src={siteImages.homepage.heroMain} alt="Wiarton Willys Inn outdoor property view" loading="eager" fetchpriority="high" />
     </div>
     <div class="container hero__content">
       <p class="eyebrow">FIRE PITS. FRESHLY UPDATED ROOMS. SPACE TO UNWIND.</p>
