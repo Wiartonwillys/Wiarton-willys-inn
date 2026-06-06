@@ -50,7 +50,7 @@ export const siteImages = {
     roomReturn: "/images/explore-nearby/return-to-relax/room-photo/main.webp",
 
     tobermoryCard: "/images/explore-nearby/destination-cards/tobermory-card-photo/the-grotto-tobermory.webp",
-    saubleBeachCard: "/images/explore-nearby/destination-cards/sauble-beach-card-photo/IMG_9880(1).webp",
+    saubleBeachCard: "/images/explore-nearby/sauble-beach/main-photo/IMG_9880(1).webp",
     bluewaterParkCard: "/images/explore-nearby/destination-cards/bluewater-park-card-photo/card.jpg",
     brucesCavesCard: "/images/explore-nearby/bruces-caves/extra-gallery-photos/IMG_9798(1).webp",
 
