@@ -11,7 +11,7 @@ export const siteImages = {
     heroMain: "/images/homepage/hero/main-property-photo/main.webp",
     heroSecondary: "/images/homepage/hero/secondary-outdoor-photo/main.webp",
     outdoorPreview: "/images/homepage/outdoor-spaces/featured-photo/featured.webp",
-    firePitPreview: "/images/homepage/fire-pits/featured-photo/featured.webp",
+    firePitPreview: "/images/homepage/fire-pits/featured-photo/wiarton_firepit_courtyard.webp",
     firePitEvening: "/images/homepage/fire-pits/evening-photo/main.webp",
     poolPreview: "/images/homepage/pool/featured-photo/wiarton-willys-seasonal-pool.webp",
     poolPatio: "/images/homepage/pool/patio-photo/main.webp",
