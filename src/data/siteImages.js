@@ -8,7 +8,7 @@ export const siteImages = {
     placeholder: placeholderImage,
   },
   homepage: {
-    heroMain: "/images/homepage/hero/main-property-photo/IMG_9713.jpg",
+    heroMain: "/images/homepage/hero/main-property-photo/IMG_9710(2).webp",
     heroSecondary: "/images/homepage/hero/secondary-outdoor-photo/main.webp",
     outdoorPreview: "/images/homepage/outdoor-spaces/featured-photo/featured.webp",
     firePitPreview: "/images/homepage/fire-pits/featured-photo/IMG_9660(2).webp",
