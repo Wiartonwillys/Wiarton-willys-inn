@@ -5,7 +5,6 @@ export const galleryCategories = [
   { label: "Outdoor Spaces", value: "outdoor-spaces" },
   { label: "Fire Pit Evenings", value: "fire-pit-evenings" },
   { label: "Seasonal Pool & Patio", value: "seasonal-pool-and-patio" },
-  { label: "Rooms & Suites", value: "rooms-and-suites" },
   { label: "Clean Updated Bathrooms", value: "clean-updated-bathrooms" },
   { label: "Nearby Places to Explore", value: "nearby-places-to-explore" },
 ];
@@ -25,13 +24,6 @@ export const galleryItems = [
     src: siteImages.seeOurProperty.firePitEvening,
     alt: "Fire pit area at Wiarton Willys Inn",
     caption: "Fire Pit Area",
-  },
-  {
-    category: "rooms-and-suites",
-    categoryLabel: "Rooms & Suites",
-    src: siteImages.seeOurProperty.roomsFeatured,
-    alt: "Updated room at Wiarton Willys Inn",
-    caption: "Rooms & Suites",
   },
   {
     category: "seasonal-pool-and-patio",
@@ -83,13 +75,6 @@ export const galleryItems = [
     caption: "Bruce’s Caves",
   },
   {
-    category: "rooms-and-suites",
-    categoryLabel: "Rooms & Suites",
-    src: siteImages.seeOurProperty.singleQueenGallery,
-    alt: "Single Queen Room at Wiarton Willys Inn",
-    caption: "Single Queen Room",
-  },
-  {
     category: "fire-pit-evenings",
     categoryLabel: "Fire Pit Evenings",
     src: siteImages.seeOurProperty.firePitSeating,
@@ -102,13 +87,6 @@ export const galleryItems = [
     src: siteImages.seeOurProperty.poolPatio,
     alt: "Pool patio at Wiarton Willys Inn",
     caption: "Pool Patio",
-  },
-  {
-    category: "rooms-and-suites",
-    categoryLabel: "Rooms & Suites",
-    src: siteImages.seeOurProperty.familyRoomGallery,
-    alt: "Family Room at Wiarton Willys Inn",
-    caption: "Family Room",
   },
   {
     category: "clean-updated-bathrooms",

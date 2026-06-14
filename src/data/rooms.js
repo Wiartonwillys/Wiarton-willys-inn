@@ -70,8 +70,9 @@ export const rooms = [
     images: [
       { src: siteImages.rooms.familyRoomMain, alt: "Family Room at Wiarton Willys Inn", caption: "Family Room" },
       { src: siteImages.rooms.familyBeds, alt: "Two double beds inside the Family Room", caption: "Two Double Beds" },
-      { src: siteImages.rooms.familySofa, alt: "Double-sized sofa bed inside the Family Room", caption: "Sofa Bed" },
       { src: siteImages.rooms.familyBathroom, alt: "Renovated private bathroom in the Family Room", caption: "Updated Bathroom" },
+      { src: siteImages.rooms.familyBathroomVanity, alt: "Bathroom vanity inside the Family Room", caption: "Bathroom Vanity" },
+      { src: siteImages.rooms.familyBathroomMirror, alt: "Lighted bathroom mirror inside the Family Room", caption: "Bathroom Mirror" },
     ],
     related: ["single-queen-room", "deluxe-family-room"],
   },
