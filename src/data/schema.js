@@ -7,7 +7,8 @@ const absoluteUrl = (path = "/") => new URL(path, `${baseUrl}/`).toString();
 const placeholderImage = "/images/global/default-placeholder/placeholder.svg";
 const schemaImage = (image = placeholderImage) => {
   if (!image.startsWith("/")) return placeholderImage;
-  const localFile = path.join(process.cwd(), "public", image.slice(1));
+  const imagePath = image.split("?")[0];
+  const localFile = path.join(process.cwd(), "public", imagePath.slice(1));
   return existsSync(localFile) ? image : placeholderImage;
 };
 
