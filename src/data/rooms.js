@@ -68,8 +68,8 @@ export const rooms = [
     ],
     amenities: ["Renovated private bathroom", "Mini fridge", "Microwave", "TV", "AC / Heat", "Free parking", "4 designated pet-friendly Family Rooms by request"],
     images: [
-      { src: siteImages.rooms.familyRoomMain, alt: "Family Room at Wiarton Willys Inn", caption: "Family Room" },
-      { src: siteImages.rooms.familyBeds, alt: "Two double beds inside the Family Room", caption: "Two Double Beds" },
+      { src: siteImages.rooms.familyBeds, alt: "Family Room seating area, TV, mini fridge, microwave, and beds at Wiarton Willys Inn", caption: "Family Room" },
+      { src: siteImages.rooms.familyRoomMain, alt: "Two double beds and sofa bed inside the Family Room", caption: "Two Double Beds" },
       { src: siteImages.rooms.familyBathroom, alt: "Renovated private bathroom in the Family Room", caption: "Updated Bathroom" },
       { src: siteImages.rooms.familyBathroomVanity, alt: "Bathroom vanity inside the Family Room", caption: "Bathroom Vanity" },
       { src: siteImages.rooms.familyBathroomMirror, alt: "Lighted bathroom mirror inside the Family Room", caption: "Bathroom Mirror" },
