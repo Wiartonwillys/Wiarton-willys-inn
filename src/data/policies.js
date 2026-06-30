@@ -16,7 +16,7 @@ export const policySummaries = [
   },
   {
     title: "Cancellation",
-    copy: "Cancellation notice depends on the type of stay: weekday, weekend, or long weekend / holiday booking. Full cancellation details are listed below.",
+    copy: "All reservations require at least 7 days’ notice before arrival for cancellation. Full cancellation details are listed below.",
     href: "#cancellation",
   },
   {
@@ -40,11 +40,8 @@ export const policySections = [
     id: "cancellation",
     title: "Cancellation",
     body: [
-      "Cancellation notice requirements depend on the type of stay:",
-      "Weekday stays: Cancellations must be made at least 48 hours before arrival.",
-      "Weekend stays: Cancellations must be made at least 72 hours before arrival.",
-      "Long weekend / holiday stays: Cancellations must be made at least 7 days before arrival.",
-      "Cancellations made after the required notice period may be subject to a one-night cancellation charge. For multi-night reservations, remaining nights may be refunded.",
+      "All reservations require at least 7 days’ notice before arrival for cancellation.",
+      "Cancellations made less than 7 days before arrival may be subject to a one-night cancellation charge. For multi-night reservations, remaining nights may be refunded.",
       "As a courtesy, if a guest cancels after the deadline, we may try to re-rent the room. If we are able to re-rent it, a refund may be issued based on the amount recovered from the replacement booking. If the room is re-rented at a lower rate, the refund amount may be limited to the lower amount recovered.",
       "No-shows will be charged the full amount of the reservation.",
     ],
