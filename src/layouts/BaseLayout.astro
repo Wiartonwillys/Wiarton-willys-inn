@@ -3,6 +3,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import MobileStickyCTA from "../components/MobileStickyCTA.astro";
 import SEOHead from "../components/SEOHead.astro";
+import DinnerPromo from "../components/DinnerPromo.astro";
 import { siteConfig } from "../data/siteConfig.js";
 import "../styles/global.css";
 
@@ -37,8 +38,21 @@ const {
     <main id="main">
       <slot />
     </main>
+    {pageType === "home" && <DinnerPromo />}
     <Footer />
     <MobileStickyCTA />
+
+    {pageType === "home" && (
+      <script is:inline>
+        const dinnerPromo = document.querySelector(".dinner-promo-shell");
+        const homepageHero = document.querySelector("main > .hero");
+        const quickValue = document.querySelector("main > .quick-value");
+        if (dinnerPromo && homepageHero) {
+          homepageHero.insertAdjacentElement("afterend", dinnerPromo);
+          quickValue?.classList.add("dinner-promo-following");
+        }
+      </script>
+    )}
 
     <script is:inline define:vars={{ gaId: siteConfig.gaId }}>
       const sendTrackingEvent = (eventName, params = {}) => {
@@ -66,6 +80,9 @@ const {
           "mobile-sticky-book": "mobile_sticky_book_click",
           "mobile-sticky-call": "mobile_sticky_call_click",
           "long-term-call": "long_term_stay_call_click",
+          "dinner-menu": "dinner_menu_click",
+          "top-notch-call": "top_notch_call_click",
+          "top-notch-directions": "top_notch_directions_click",
         };
         const eventName = eventMap[trackName] || trackName;
         sendTrackingEvent(eventName, {
