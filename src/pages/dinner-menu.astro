@@ -1,10 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const topNotchPhoneDisplay = "(519) 534-1310";
+const topNotchPhoneDisplay = "519-534-1310";
 const topNotchPhoneHref = "tel:+15195341310";
 const topNotchMapsUrl = "https://www.google.com/maps/search/?api=1&query=Top%20Notch%20Motel%20%26%20Restaurant%2C%2010171%20Highway%206%2C%20Wiarton%2C%20Ontario";
-const menuArtwork = "/images/dinner-menu/top-notch-indian-dinner-menu.svg";
+const menuArtwork = "/images/dinner-menu/top-notch-indian-dinner-menu-original.png";
 
 const combos = [
   { name: "Butter Chicken Combo", price: "$22.95", description: "Rich, creamy butter chicken with tender chicken pieces." },
@@ -21,256 +21,450 @@ const poutines = [
 ---
 
 <BaseLayout
-  title="Weekend Indian-Style Dinner Takeout | Top Notch Motel & Restaurant"
-  description="View the Top Notch Indian-style weekend takeout menu. Available Friday, Saturday and Sunday from 5:00 PM to 11:00 PM at 10171 Highway 6 in Wiarton."
+  title="Top Notch Indian-Style Dinner Takeout | Wiarton"
+  description="View the Top Notch Indian-style dinner takeout menu. Friday, Saturday and Sunday from 5:00 PM to 11:00 PM at 10171 Highway 6 in Wiarton."
   canonicalPath="/dinner-menu"
   image={menuArtwork}
   pageType="dinner-menu"
 >
-  <section class="dinner-page-hero">
-    <div class="container dinner-page-hero__grid">
-      <div class="dinner-page-hero__copy">
+  <section class="dinner-hero">
+    <div class="container dinner-hero__grid">
+      <div class="dinner-hero__copy">
         <p class="eyebrow">Top Notch Motel &amp; Restaurant</p>
         <span class="dinner-badge">Takeout Only</span>
-        <h1>Weekend Indian-Style Dinner Takeout</h1>
+        <h1>Indian-Style Dinner, Ready for Pickup</h1>
+        <p class="lead">Pick your combo, add a naan, and enjoy an easy weekend dinner in Wiarton.</p>
 
-        <a class="dinner-address" href={topNotchMapsUrl} target="_blank" rel="noopener noreferrer" data-track="top-notch-directions">
-          <span aria-hidden="true">●</span>
-          10171 Highway 6, Wiarton, Ontario
-        </a>
-
-        <p class="pickup-note"><strong>Dinner pickup is at Top Notch Motel &amp; Restaurant, not at Wiarton Willys Inn.</strong></p>
-
-        <div class="dinner-hours">
-          <strong>Friday • Saturday • Sunday</strong>
-          <span>5:00 PM – 11:00 PM</span>
-        </div>
-
-        <p class="lead">Enjoy Indian dinner combos, extra naan, and Indian fusion poutines — perfect for an easy weekend takeout meal.</p>
-
-        <div class="button-row">
-          <a class="btn btn-primary" href={topNotchPhoneHref} data-track="top-notch-call">Call to Order {topNotchPhoneDisplay}</a>
-          <a class="btn btn-secondary" href={topNotchMapsUrl} target="_blank" rel="noopener noreferrer" data-track="top-notch-directions">Get Directions</a>
+        <div class="dinner-hero__actions button-row">
+          <a class="btn btn-primary dinner-call-button" href={topNotchPhoneHref} data-track="top-notch-call">
+            <span>Call to Order</span>
+            <strong>{topNotchPhoneDisplay}</strong>
+          </a>
+          <a class="btn btn-secondary" href={topNotchMapsUrl} target="_blank" rel="noopener noreferrer" data-track="top-notch-directions">
+            Get Directions
+          </a>
         </div>
       </div>
 
-      <div class="dinner-page-hero__art">
-        <img src={menuArtwork} alt="Top Notch Indian Style Dinner menu artwork" loading="eager" />
-      </div>
-    </div>
-  </section>
-
-  <section class="section-tight dinner-menu-section">
-    <div class="container dinner-menu-layout">
-      <div class="dinner-menu-main">
-        <article class="dinner-menu-card">
-          <div class="dinner-section-heading">
-            <p class="eyebrow">Weekend Menu</p>
-            <h2>Indian Dinner Combos</h2>
-            <p>Every combo includes your selected main, basmati rice, and one butter naan.</p>
+      <aside class="pickup-card" aria-label="Dinner pickup details">
+        <p class="pickup-card__label">Weekend Pickup</p>
+        <div class="pickup-card__detail">
+          <span class="pickup-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path d="M7 2v3M17 2v3M3.5 9h17M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+          </span>
+          <div>
+            <small>Hours</small>
+            <strong>Friday · Saturday · Sunday</strong>
+            <span>5:00 PM – 11:00 PM</span>
           </div>
+        </div>
 
-          <div class="dinner-items">
-            {combos.map((item, index) => (
-              <div class="dinner-item">
-                <div class="dinner-item__number">{index + 1}</div>
-                <div class="dinner-item__content">
-                  <div class="dinner-item__topline">
-                    <h3>{item.name} {item.vegetarian && <span class="veg" title="Vegetarian">●</span>}</h3>
-                    <span class="dinner-item__price">{item.price}</span>
-                  </div>
-                  <p>{item.description}</p>
-                </div>
-              </div>
-            ))}
+        <a class="pickup-card__detail pickup-card__detail--link" href={topNotchMapsUrl} target="_blank" rel="noopener noreferrer" data-track="top-notch-directions">
+          <span class="pickup-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path d="M12 22s7-6.2 7-13a7 7 0 1 0-14 0c0 6.8 7 13 7 13Zm0-9.5A3.5 3.5 0 1 1 12 5a3.5 3.5 0 0 1 0 7.5Z" fill="currentColor"></path>
+            </svg>
+          </span>
+          <div>
+            <small>Pickup Location</small>
+            <strong>10171 Highway 6</strong>
+            <span>Wiarton, Ontario</span>
           </div>
-        </article>
-
-        <aside class="naan-strip">
-          <h2>Extra Naan</h2>
-          <div><span>Extra Butter Naan</span><strong>$1.00</strong></div>
-          <div><span>Extra Garlic Naan</span><strong>$1.50</strong></div>
-        </aside>
-
-        <article class="dinner-menu-card">
-          <div class="dinner-section-heading">
-            <p class="eyebrow">Indian Fusion</p>
-            <h2>Poutines</h2>
-          </div>
-
-          <div class="dinner-items">
-            {poutines.map((item, index) => (
-              <div class="dinner-item">
-                <div class="dinner-item__number">{index + 1}</div>
-                <div class="dinner-item__content">
-                  <div class="dinner-item__topline">
-                    <h3>{item.name} {item.vegetarian && <span class="veg" title="Vegetarian">●</span>}</h3>
-                    <span class="dinner-item__price">{item.price}</span>
-                  </div>
-                  <p>{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </article>
-      </div>
-
-      <aside class="poster-card" id="original-menu-artwork">
-        <p class="eyebrow">Original Artwork</p>
-        <h2>View the Full Menu Poster</h2>
-        <p>Open the original menu artwork in a new tab for a closer look.</p>
-        <a href={menuArtwork} target="_blank" rel="noopener noreferrer">
-          <img src={menuArtwork} alt="Full Top Notch Indian Style Dinner menu poster" loading="lazy" />
         </a>
-        <a class="btn btn-primary" href={menuArtwork} target="_blank" rel="noopener noreferrer">Open Full Menu Poster</a>
+
+        <p class="pickup-warning">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22">
+            <path d="M12 3 2.5 20h19L12 3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M12 9v5M12 17.5v.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          <strong>Pickup is at Top Notch Motel &amp; Restaurant, not Wiarton Willys Inn.</strong>
+        </p>
       </aside>
     </div>
   </section>
 
-  <section class="dinner-order-cta">
-    <div class="container dinner-order-cta__inner">
-      <div>
-        <span class="dinner-badge">Takeout Only</span>
-        <h2>Ready for Weekend Dinner?</h2>
-        <p>Order from Top Notch Motel &amp; Restaurant and pick up at 10171 Highway 6 in Wiarton.</p>
-        <p class="dinner-order-cta__hours">Friday • Saturday • Sunday | 5:00 PM – 11:00 PM</p>
-      </div>
-      <div class="button-row">
-        <a class="btn btn-primary" href={topNotchPhoneHref} data-track="top-notch-call">Call to Order {topNotchPhoneDisplay}</a>
-        <a class="btn btn-light" href={topNotchMapsUrl} target="_blank" rel="noopener noreferrer" data-track="top-notch-directions">Get Directions</a>
+  <section class="dinner-menu-section" aria-labelledby="menu-heading">
+    <div class="container">
+      <header class="dinner-menu-intro">
+        <div>
+          <p class="eyebrow">The Dinner Menu</p>
+          <h2 id="menu-heading">Choose Your Dinner</h2>
+        </div>
+        <p>Every combo includes your selected main, basmati rice, and one butter naan.</p>
+      </header>
+
+      <div class="dinner-menu-layout">
+        <div class="dinner-menu-main">
+          <article class="menu-card">
+            <div class="menu-card__heading">
+              <div>
+                <span>01</span>
+                <h2>Indian Dinner Combos</h2>
+              </div>
+              <p>Rice + butter naan included</p>
+            </div>
+
+            <ol class="dinner-items">
+              {combos.map((item) => (
+                <li class="dinner-item">
+                  <div class="dinner-item__content">
+                    <div class="dinner-item__topline">
+                      <h3>
+                        {item.name}
+                        {item.vegetarian && <span class="veg-label">Vegetarian</span>}
+                      </h3>
+                      <span class="dinner-item__price">{item.price}</span>
+                    </div>
+                    <p>{item.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <div class="naan-list" aria-labelledby="naan-heading">
+              <div class="naan-list__heading">
+                <h3 id="naan-heading">Extra Naan</h3>
+                <span>Optional add-ons</span>
+              </div>
+              <div><span>Extra Butter Naan</span><strong>$1.00</strong></div>
+              <div><span>Extra Garlic Naan</span><strong>$1.50</strong></div>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <div class="menu-card__heading">
+              <div>
+                <span>02</span>
+                <h2>Indian Fusion Poutines</h2>
+              </div>
+            </div>
+
+            <ol class="dinner-items">
+              {poutines.map((item) => (
+                <li class="dinner-item">
+                  <div class="dinner-item__content">
+                    <div class="dinner-item__topline">
+                      <h3>
+                        {item.name}
+                        {item.vegetarian && <span class="veg-label">Vegetarian</span>}
+                      </h3>
+                      <span class="dinner-item__price">{item.price}</span>
+                    </div>
+                    <p>{item.description}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </article>
+        </div>
+
+        <aside class="poster-card" id="original-menu-artwork" aria-labelledby="poster-heading">
+          <div class="poster-card__heading">
+            <div>
+              <p class="eyebrow">Original Artwork</p>
+              <h2 id="poster-heading">Top Notch Menu Poster</h2>
+            </div>
+            <p>The original poster is shown exactly as supplied. Select it to open the full-size artwork.</p>
+          </div>
+
+          <a class="poster-frame" href={menuArtwork} target="_blank" rel="noopener noreferrer" aria-label="Open the original Top Notch menu poster full size">
+            <span class="poster-frame__inner">
+              <img
+                src={menuArtwork}
+                width="1103"
+                height="1426"
+                alt="Original Top Notch Indian Style Dinner takeout menu poster"
+                loading="lazy"
+              />
+            </span>
+          </a>
+
+          <a class="btn btn-secondary poster-card__button" href={menuArtwork} target="_blank" rel="noopener noreferrer">
+            Open Full-Size Poster
+          </a>
+        </aside>
       </div>
     </div>
   </section>
 
-  <div class="container dinner-clarification">
-    <strong>This dinner menu is offered and fulfilled by Top Notch Motel &amp; Restaurant at 10171 Highway 6, Wiarton. It is not served at Wiarton Willys Inn.</strong>
-  </div>
+  <section class="dinner-order-cta" aria-labelledby="order-heading">
+    <div class="container dinner-order-cta__inner">
+      <div class="dinner-order-cta__copy">
+        <span class="dinner-badge dinner-badge--light">Takeout Only</span>
+        <h2 id="order-heading">Dinner is handled.</h2>
+        <p>Call Top Notch to order, then pick up at 10171 Highway 6 in Wiarton.</p>
+        <strong class="dinner-order-cta__warning">Pickup is not at Wiarton Willys Inn.</strong>
+      </div>
+      <div class="dinner-order-cta__details">
+        <p><span>Friday · Saturday · Sunday</span><strong>5:00 PM – 11:00 PM</strong></p>
+        <div class="button-row">
+          <a class="btn btn-primary dinner-call-button" href={topNotchPhoneHref} data-track="top-notch-call">
+            <span>Call to Order</span>
+            <strong>{topNotchPhoneDisplay}</strong>
+          </a>
+          <a class="btn btn-light" href={topNotchMapsUrl} target="_blank" rel="noopener noreferrer" data-track="top-notch-directions">
+            Get Directions
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
-  .dinner-page-hero {
-    padding: clamp(2rem, 5vw, 4rem) 0;
+  .dinner-hero {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(3rem, 7vw, 6.5rem) 0;
+    border-bottom: 1px solid rgba(17, 25, 23, 0.1);
     background:
-      linear-gradient(135deg, rgba(215, 25, 32, 0.055), transparent 32rem),
-      rgba(255, 253, 248, 0.92);
-    border-bottom: 1px solid rgba(17, 25, 23, 0.08);
+      radial-gradient(circle at 83% 12%, rgba(196, 154, 66, 0.22), transparent 22rem),
+      linear-gradient(135deg, rgba(215, 25, 32, 0.075), transparent 34rem),
+      var(--color-cream-light);
   }
 
-  .dinner-page-hero__grid,
+  .dinner-hero::before {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 5px;
+    background: linear-gradient(var(--color-rust), var(--color-gold), var(--color-forest));
+    content: "";
+  }
+
+  .dinner-hero__grid,
   .dinner-menu-layout,
   .dinner-order-cta__inner {
     display: grid;
-    gap: clamp(1.5rem, 4vw, 3rem);
+    gap: clamp(1.75rem, 5vw, 4.5rem);
   }
 
-  .dinner-page-hero__copy {
+  .dinner-hero__copy {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
   }
 
-  .dinner-page-hero h1 {
-    margin: 0.85rem 0 1rem;
+  .dinner-hero h1 {
+    max-width: 780px;
+    margin: 1rem 0 1.25rem;
     color: var(--color-forest);
-    font-size: clamp(2.7rem, 6vw, 5rem);
+    font-size: clamp(2.75rem, 7vw, 5.5rem);
+  }
+
+  .dinner-hero .lead {
+    max-width: 650px;
   }
 
   .dinner-badge {
     display: inline-flex;
-    padding: 0.38rem 0.78rem;
+    padding: 0.42rem 0.82rem;
     border-radius: 999px;
     background: var(--color-rust-dark);
-    color: #fff;
-    font-size: 0.78rem;
+    color: var(--color-cream-light);
+    font-size: 0.76rem;
     font-weight: 900;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.07em;
+    line-height: 1;
     text-transform: uppercase;
   }
 
-  .dinner-address {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
+  .dinner-badge--light {
+    background: var(--color-cream-light);
     color: var(--color-rust-dark);
-    font-size: clamp(1rem, 2vw, 1.18rem);
-    font-weight: 900;
   }
 
-  .pickup-note {
-    max-width: 640px;
-    margin-top: 0.7rem;
-    color: var(--color-muted);
+  .dinner-hero__actions {
+    margin-top: 1.75rem;
   }
 
-  .dinner-hours {
-    display: grid;
-    gap: 0.2rem;
-    margin: 1.25rem 0;
-    padding: 0.9rem 1rem;
-    border-left: 4px solid var(--color-rust);
-    background: rgba(32, 63, 50, 0.06);
-    color: var(--color-forest-dark);
-    font-size: 1.05rem;
+  .dinner-call-button {
+    gap: 0.65rem;
   }
 
-  .dinner-page-hero__art {
-    min-height: 480px;
+  .dinner-call-button strong {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pickup-card {
+    position: relative;
+    align-self: center;
     overflow: hidden;
-    border: 1px solid rgba(17, 25, 23, 0.12);
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border: 1px solid rgba(17, 25, 23, 0.13);
     border-radius: var(--radius-lg);
-    background: #efe4d1;
+    background: rgba(255, 253, 248, 0.96);
     box-shadow: var(--shadow-soft);
   }
 
-  .dinner-page-hero__art img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 50% 18%;
+  .pickup-card::before {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 5px;
+    background: linear-gradient(90deg, var(--color-rust), var(--color-gold), var(--color-forest));
+    content: "";
+  }
+
+  .pickup-card__label {
+    margin-bottom: 0.45rem;
+    color: var(--color-rust-dark);
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 800;
+  }
+
+  .pickup-card__detail {
+    display: grid;
+    grid-template-columns: 2.75rem minmax(0, 1fr);
+    gap: 0.85rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid rgba(17, 25, 23, 0.1);
+    text-decoration: none;
+  }
+
+  .pickup-card__detail--link:hover strong,
+  .pickup-card__detail--link:hover span {
+    color: var(--color-rust-dark);
+  }
+
+  .pickup-card__icon {
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(32, 63, 50, 0.09);
+    color: var(--color-forest);
+  }
+
+  .pickup-card__detail div {
+    display: grid;
+    gap: 0.08rem;
+  }
+
+  .pickup-card__detail small {
+    color: var(--color-rust-dark);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .pickup-card__detail strong {
+    color: var(--color-forest-dark);
+    font-size: 1.02rem;
+  }
+
+  .pickup-card__detail span {
+    color: var(--color-muted);
+  }
+
+  .pickup-warning {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.65rem;
+    margin-top: 1.2rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(159, 19, 24, 0.2);
+    border-radius: var(--radius-md);
+    background: rgba(215, 25, 32, 0.055);
+    color: var(--color-rust-dark);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .pickup-warning svg {
+    margin-top: 0.08rem;
   }
 
   .dinner-menu-section {
-    background: rgba(255, 253, 248, 0.58);
+    padding: clamp(3.5rem, 8vw, 6.5rem) 0;
+    background:
+      linear-gradient(180deg, rgba(255, 253, 248, 0.78), rgba(245, 241, 234, 0.92)),
+      var(--color-cream);
+  }
+
+  .dinner-menu-intro {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: clamp(2rem, 5vw, 3.5rem);
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(17, 25, 23, 0.12);
+  }
+
+  .dinner-menu-intro h2 {
+    color: var(--color-forest);
+  }
+
+  .dinner-menu-intro > p {
+    max-width: 510px;
+    color: var(--color-muted);
+    font-size: clamp(1rem, 2vw, 1.15rem);
   }
 
   .dinner-menu-main {
     display: grid;
-    gap: 1rem;
+    gap: 1.25rem;
   }
 
-  .dinner-menu-card,
-  .poster-card,
-  .naan-strip {
-    padding: clamp(1.15rem, 3vw, 1.8rem);
-    border: 1px solid rgba(17, 25, 23, 0.11);
+  .menu-card,
+  .poster-card {
+    border: 1px solid rgba(17, 25, 23, 0.12);
     border-radius: var(--radius-lg);
     background: rgba(255, 253, 248, 0.96);
     box-shadow: var(--shadow-card);
   }
 
-  .dinner-section-heading {
-    display: grid;
-    gap: 0.55rem;
-    padding-bottom: 1.2rem;
-    border-bottom: 1px solid rgba(17, 25, 23, 0.1);
+  .menu-card {
+    overflow: hidden;
   }
 
-  .dinner-section-heading h2,
-  .poster-card h2,
-  .naan-strip h2 {
+  .menu-card__heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: clamp(1.2rem, 3vw, 1.7rem);
+    border-bottom: 1px solid rgba(17, 25, 23, 0.1);
+    background: linear-gradient(120deg, rgba(32, 63, 50, 0.065), transparent);
+  }
+
+  .menu-card__heading > div {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .menu-card__heading > div > span {
+    color: var(--color-rust-dark);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+
+  .menu-card__heading h2 {
     color: var(--color-forest);
+    font-size: clamp(1.55rem, 3vw, 2.15rem);
+  }
+
+  .menu-card__heading > p {
+    flex: 0 0 auto;
+    color: var(--color-muted);
+    font-size: 0.82rem;
+    font-weight: 800;
   }
 
   .dinner-items {
-    display: grid;
+    margin: 0;
+    padding: 0 clamp(1.2rem, 3vw, 1.7rem);
+    list-style-position: outside;
   }
 
   .dinner-item {
-    display: grid;
-    grid-template-columns: 2rem minmax(0, 1fr);
-    gap: 0.75rem;
-    padding: 1.05rem 0;
+    margin-left: 1.55rem;
+    padding: 1.15rem 0 1.15rem 0.15rem;
     border-bottom: 1px solid rgba(17, 25, 23, 0.09);
   }
 
@@ -278,14 +472,9 @@ const poutines = [
     border-bottom: 0;
   }
 
-  .dinner-item__number {
-    display: grid;
-    width: 1.8rem;
-    height: 1.8rem;
-    place-items: center;
-    border-radius: 50%;
-    background: rgba(32, 63, 50, 0.1);
-    color: var(--color-forest);
+  .dinner-item::marker {
+    color: var(--color-rust-dark);
+    font-family: var(--font-heading);
     font-weight: 900;
   }
 
@@ -297,70 +486,161 @@ const poutines = [
   }
 
   .dinner-item h3 {
+    color: var(--color-forest-dark);
     font-family: var(--font-body);
-    font-size: clamp(1.02rem, 2vw, 1.25rem);
+    font-size: clamp(1.02rem, 2vw, 1.2rem);
+    line-height: 1.35;
   }
 
   .dinner-item p {
-    margin-top: 0.25rem;
+    max-width: 620px;
+    margin-top: 0.22rem;
     color: var(--color-muted);
+    font-size: 0.94rem;
+    line-height: 1.55;
   }
 
   .dinner-item__price {
     flex: 0 0 auto;
     color: var(--color-rust-dark);
     font-family: var(--font-heading);
-    font-size: 1.12rem;
+    font-size: 1.14rem;
+    font-variant-numeric: tabular-nums;
     font-weight: 900;
   }
 
-  .veg {
-    color: #3b8f3f;
-    font-size: 0.65em;
-    vertical-align: middle;
+  .veg-label {
+    display: inline-flex;
+    margin-left: 0.4rem;
+    padding: 0.14rem 0.42rem;
+    border-radius: 999px;
+    background: rgba(58, 123, 62, 0.1);
+    color: #34733a;
+    font-size: 0.64rem;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+    vertical-align: 0.18em;
+    white-space: nowrap;
   }
 
-  .naan-strip {
+  .naan-list {
     display: grid;
-    gap: 0.65rem;
-    border-color: rgba(159, 19, 24, 0.22);
-    background: linear-gradient(135deg, rgba(215, 25, 32, 0.04), rgba(255, 253, 248, 0.96));
+    gap: 0;
+    margin: 0 clamp(1.2rem, 3vw, 1.7rem) clamp(1.2rem, 3vw, 1.7rem);
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(159, 19, 24, 0.2);
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, rgba(215, 25, 32, 0.045), rgba(255, 253, 248, 0.98));
   }
 
-  .naan-strip div {
+  .naan-list__heading,
+  .naan-list > div:not(.naan-list__heading) {
     display: flex;
+    align-items: baseline;
     justify-content: space-between;
     gap: 1rem;
-    padding-top: 0.55rem;
-    border-top: 1px dotted rgba(17, 25, 23, 0.25);
   }
 
-  .naan-strip strong {
+  .naan-list__heading {
+    padding-bottom: 0.65rem;
+  }
+
+  .naan-list__heading h3 {
     color: var(--color-rust-dark);
+    font-size: 1.25rem;
+  }
+
+  .naan-list__heading span {
+    color: var(--color-muted);
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  .naan-list > div:not(.naan-list__heading) {
+    padding: 0.58rem 0;
+    border-top: 1px dotted rgba(17, 25, 23, 0.24);
+  }
+
+  .naan-list strong {
+    color: var(--color-rust-dark);
+    font-family: var(--font-heading);
+    font-variant-numeric: tabular-nums;
   }
 
   .poster-card {
     align-self: start;
-    display: grid;
-    gap: 1rem;
+    padding: clamp(1.15rem, 3vw, 1.6rem);
   }
 
-  .poster-card > a:first-of-type {
+  .poster-card__heading {
+    display: grid;
+    gap: 0.55rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .poster-card__heading h2 {
+    color: var(--color-forest);
+    font-size: clamp(1.65rem, 3vw, 2.25rem);
+  }
+
+  .poster-card__heading > p {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .poster-frame {
+    position: relative;
+    display: block;
+    padding: clamp(0.55rem, 1.5vw, 0.9rem);
+    border: 1px solid rgba(159, 19, 24, 0.35);
+    border-radius: 18px;
+    background:
+      linear-gradient(135deg, rgba(196, 154, 66, 0.24), rgba(159, 19, 24, 0.12)),
+      var(--color-cream);
+    box-shadow: 0 12px 28px rgba(12, 22, 20, 0.14);
+  }
+
+  .poster-frame::before {
+    position: absolute;
+    inset: 0.3rem;
+    border: 1px solid rgba(159, 19, 24, 0.3);
+    border-radius: 13px;
+    pointer-events: none;
+    content: "";
+  }
+
+  .poster-frame__inner {
+    position: relative;
+    z-index: 1;
     display: block;
     overflow: hidden;
-    border-radius: 16px;
-    border: 1px solid rgba(159, 19, 24, 0.2);
-    background: #efe4d1;
+    border-radius: 10px;
+    background: #eadabd;
   }
 
-  .poster-card img {
+  .poster-frame img {
     width: 100%;
+    height: auto;
+  }
+
+  .poster-frame:hover {
+    color: inherit;
+    box-shadow: 0 16px 36px rgba(12, 22, 20, 0.18);
+  }
+
+  .poster-card__button {
+    width: 100%;
+    margin-top: 1rem;
   }
 
   .dinner-order-cta {
-    padding: clamp(2rem, 5vw, 3.5rem) 0;
+    position: relative;
+    overflow: hidden;
+    padding: clamp(3rem, 7vw, 5rem) 0;
     background:
-      linear-gradient(135deg, rgba(215, 25, 32, 0.14), transparent 30rem),
+      radial-gradient(circle at 92% 20%, rgba(196, 154, 66, 0.18), transparent 20rem),
+      linear-gradient(135deg, rgba(215, 25, 32, 0.12), transparent 32rem),
       var(--color-forest-dark);
     color: var(--color-cream-light);
   }
@@ -371,31 +651,58 @@ const poutines = [
   }
 
   .dinner-order-cta h2 {
-    margin-top: 0.75rem;
+    margin: 0.85rem 0 0.7rem;
+    font-size: clamp(2.35rem, 5vw, 4rem);
   }
 
-  .dinner-order-cta__hours {
-    margin-top: 0.75rem;
-    font-weight: 850;
+  .dinner-order-cta__copy > p {
+    max-width: 610px;
+    color: rgba(255, 253, 248, 0.82);
+    font-size: 1.04rem;
   }
 
-  .dinner-clarification {
-    margin-block: 1rem 2rem;
-    padding: 1rem 1.1rem;
-    border: 1px solid rgba(159, 19, 24, 0.16);
-    border-radius: var(--radius-md);
-    background: rgba(255, 253, 248, 0.92);
-    color: var(--color-muted);
-    text-align: center;
+  .dinner-order-cta__warning {
+    display: inline-flex;
+    margin-top: 1rem;
+    color: #f4cf73;
   }
 
-  @media (min-width: 900px) {
-    .dinner-page-hero__grid {
-      grid-template-columns: minmax(0, 0.95fr) minmax(380px, 1.05fr);
+  .dinner-order-cta__details {
+    display: grid;
+    gap: 1.25rem;
+    align-content: center;
+  }
+
+  .dinner-order-cta__details > p {
+    display: grid;
+    gap: 0.1rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--color-rust);
+  }
+
+  .dinner-order-cta__details > p span {
+    color: rgba(255, 253, 248, 0.78);
+  }
+
+  .dinner-order-cta__details > p strong {
+    font-size: 1.1rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (min-width: 760px) {
+    .dinner-menu-intro {
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
+      align-items: end;
+    }
+  }
+
+  @media (min-width: 920px) {
+    .dinner-hero__grid {
+      grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.68fr);
     }
 
     .dinner-menu-layout {
-      grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+      grid-template-columns: minmax(0, 0.92fr) minmax(390px, 0.72fr);
       align-items: start;
     }
 
@@ -411,20 +718,41 @@ const poutines = [
   }
 
   @media (max-width: 620px) {
-    .dinner-page-hero__art {
-      min-height: 390px;
+    .dinner-hero {
+      padding-top: 2.5rem;
+    }
+
+    .dinner-hero__actions,
+    .dinner-order-cta .button-row {
+      display: grid;
+      width: 100%;
+    }
+
+    .dinner-hero__actions .btn,
+    .dinner-order-cta .btn {
+      width: 100%;
+    }
+
+    .menu-card__heading {
+      display: grid;
+      align-items: start;
+    }
+
+    .menu-card__heading > p {
+      padding-left: 2.05rem;
     }
 
     .dinner-item__topline {
       align-items: flex-start;
     }
 
-    .dinner-order-cta .button-row {
-      display: grid;
+    .dinner-item__price {
+      padding-top: 0.05rem;
     }
 
-    .dinner-order-cta .btn {
-      width: 100%;
+    .veg-label {
+      display: table;
+      margin: 0.28rem 0 0;
     }
   }
 </style>
