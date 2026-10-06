@@ -18,7 +18,6 @@ export const siteImages = {
     singleQueenCard: "/images/homepage/rooms-preview/single-queen-card-photo/single-queen-room-bed-homepage.webp",
     familyRoomCard: "/images/homepage/rooms-preview/family-room-card-photo/card.webp",
     deluxeFamilyCard: "/images/homepage/rooms-preview/deluxe-family-room-card-photo/card.webp",
-    explorePreview: "/images/homepage/explore-preview/main-photo/tim-hortons-ontario.jpg",
     homepageTobermoryCard: "/images/homepage/explore-destination-cards/tobermory-card-photo/homepage-tobermory-card.webp",
     homepageSaubleBeachCard: "/images/homepage/explore-destination-cards/sauble-beach-card-photo/IMG_9880(1).webp",
     guestTrust: "/images/homepage/guest-trust/supporting-photo/featured.webp",
