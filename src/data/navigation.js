@@ -1,6 +1,7 @@
 import { siteConfig } from "./siteConfig.js";
 
 export const mainNav = [
+  { label: "Breakfast", href: "/breakfast", featured: true },
   { label: "Rooms", href: "/rooms" },
   { label: "Explore Nearby", href: "/explore" },
   { label: "See Our Property", href: "/see-our-property" },
@@ -30,6 +31,7 @@ export const footerLinks = {
     { label: "Bruce’s Caves", href: "/explore/bruces-caves" },
   ],
   guestInfo: [
+    { label: "Breakfast", href: "/breakfast" },
     { label: "Policies", href: "/policies" },
     { label: "Pet Policy", href: "/policies#pet-policy" },
     { label: "Fire Pit Guidelines", href: "/policies#fire-pits" },
