@@ -20,7 +20,7 @@ const active = (href) => {
 
     <nav class="desktop-nav" aria-label="Main navigation">
       {mainNav.map((item) => (
-        <a href={item.href} class:list={[active(item.href) && "is-active"]}>{item.label}</a>
+        <a href={item.href} class:list={[item.featured && "is-featured", active(item.href) && "is-active"]}>{item.label}</a>
       ))}
     </nav>
 
@@ -56,6 +56,7 @@ const active = (href) => {
           rel={item.external ? "noopener noreferrer" : undefined}
           data-track={item.track}
           data-primary={item.label === "Book Direct" ? "true" : undefined}
+          data-featured={item.featured ? "true" : undefined}
         >
           {item.label}
           <span aria-hidden="true">→</span>
