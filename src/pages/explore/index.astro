@@ -21,6 +21,9 @@ const schema = [
   breadcrumbSchema(breadcrumbs),
   webpageSchema({ title: meta.title, description: meta.description, path: "/explore" }),
 ];
+
+const topNotchBreakfastMapsUrl = "https://www.google.com/maps/search/?api=1&query=Top%20Notch%20Breakfast%20Restaurant%2C%2010171%20Highway%206%2C%20Wiarton%2C%20Ontario";
+const topNotchBreakfastPhone = "tel:+15195341310";
 ---
 
 <BaseLayout title={meta.title} description={meta.description} canonicalPath="/explore" image={siteImages.exploreNearby.heroMain} schema={schema} pageType="explore">
@@ -81,7 +84,7 @@ const schema = [
       <div class="timeline">
         <article class="timeline__item">
           <h3>Morning</h3>
-          <p>Grab Tim Hortons before heading north.</p>
+          <p>Start with a homestyle breakfast at <a href={topNotchBreakfastMapsUrl} target="_blank" rel="noopener noreferrer">Top Notch Breakfast Restaurant</a> before heading north.</p>
         </article>
         <article class="timeline__item">
           <h3>Day</h3>
@@ -111,10 +114,18 @@ const schema = [
           <h3>Fire Pit Evenings</h3>
           <p>Settle outside after a beach day, cave walk, boat tour, or long drive.</p>
         </article>
-        <article class="return-card">
-          <ImageFrame src={siteImages.homepage.explorePreview} alt="Tim Hortons storefront in Ontario" square />
-          <h3>Simple Eats After Exploring</h3>
-          <p>Grab something easy after a full day out, with familiar food options, local restaurants, snacks, LCBO, and convenience stops close by.</p>
+        <article class="return-card return-card--breakfast">
+          <div class="breakfast-card-art" aria-hidden="true">
+            <span>TOP NOTCH</span>
+            <strong>BREAKFAST</strong>
+            <small>8:00 AM–2:00 PM DAILY</small>
+          </div>
+          <h3>Breakfast Before Tomorrow’s Adventure</h3>
+          <p>Top Notch Breakfast Restaurant serves homestyle breakfast daily at 10171 Highway 6 in Wiarton.</p>
+          <div class="button-row">
+            <a class="btn btn-primary" href={topNotchBreakfastMapsUrl} target="_blank" rel="noopener noreferrer" data-track="top-notch-breakfast-directions">Get Directions</a>
+            <a class="btn btn-secondary" href={topNotchBreakfastPhone} data-track="call">Call</a>
+          </div>
         </article>
         <article class="return-card">
           <ImageFrame src={siteImages.exploreNearby.poolReturn} alt="Seasonal pool at Wiarton Willys Inn" square />
@@ -141,3 +152,41 @@ const schema = [
     secondaryTrack="book-direct"
   />
 </BaseLayout>
+
+<style>
+  .return-card--breakfast {
+    align-content: start;
+    padding: 0.65rem;
+  }
+
+  .breakfast-card-art {
+    display: grid;
+    min-height: 180px;
+    place-content: center;
+    gap: 0.2rem;
+    padding: 1.25rem;
+    border-radius: 12px;
+    background:
+      linear-gradient(145deg, rgba(215, 25, 32, 0.11), rgba(255, 253, 248, 0.96)),
+      var(--color-cream-light);
+    color: var(--color-forest);
+    text-align: center;
+  }
+
+  .breakfast-card-art span,
+  .breakfast-card-art small {
+    color: var(--color-rust-dark);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+
+  .breakfast-card-art strong {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 4vw, 2.7rem);
+    line-height: 1;
+  }
+
+  .return-card--breakfast .button-row {
+    padding: 0 0.35rem 0.45rem;
+  }
+</style>
