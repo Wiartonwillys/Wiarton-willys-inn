@@ -477,6 +477,12 @@ p {
   color: var(--color-cream-light);
 }
 
+.mobile-menu__links a[data-featured="true"] {
+  border: 2px solid rgba(215, 25, 32, 0.28);
+  background: rgba(215, 25, 32, 0.1);
+  color: var(--color-rust-dark);
+}
+
 .menu-backdrop {
   position: fixed;
   inset: 0;
@@ -2167,6 +2173,21 @@ p {
   .desktop-nav a.is-active {
     background: rgba(255, 250, 240, 0.2);
     color: inherit;
+  }
+
+  .desktop-nav a.is-featured {
+    background: var(--color-rust);
+    color: var(--color-cream-light);
+    box-shadow: 0 10px 24px rgba(159, 19, 24, 0.24);
+  }
+
+  .desktop-nav a.is-featured:hover,
+  .desktop-nav a.is-featured.is-active,
+  .site-header:not(.site-header--home) .desktop-nav a.is-featured,
+  .site-header--home.is-scrolled .desktop-nav a.is-featured,
+  .site-header--home:focus-within .desktop-nav a.is-featured {
+    background: var(--color-rust-dark);
+    color: var(--color-cream-light);
   }
 
   .site-header:not(.site-header--home) .desktop-nav a:hover,
