@@ -1,13 +1,5 @@
 export const imageCredits = [
   {
-    title: "Tim Hortons in Southampton, Ontario",
-    usage: "Homepage quick essentials photo",
-    author: "Andre Carrotflower",
-    license: "CC BY-SA 4.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:20150703_-_34_-_Southampton,_Ont._-_Tim_Hortons.jpg",
-  },
-  {
     title: "Tour Boat Great Blue Heron in Tobermory",
     usage: "Tobermory hero, destination card, and nearby gallery photo",
     author: "Robert Taylor",
