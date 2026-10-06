@@ -25,6 +25,9 @@ const homepageRoomCards = roomCards.map((room) =>
     ? { ...room, image: siteImages.homepage.singleQueenCard, alt: "Single Queen Room bed at Wiarton Willys Inn" }
     : room
 );
+
+const topNotchBreakfastMapsUrl = "https://www.google.com/maps/search/?api=1&query=Top%20Notch%20Breakfast%20Restaurant%2C%2010171%20Highway%206%2C%20Wiarton%2C%20Ontario";
+const topNotchBreakfastPhone = "tel:+15195341310";
 ---
 
 <BaseLayout
@@ -115,16 +118,20 @@ const homepageRoomCards = roomCards.map((room) =>
   <section class="section" id="quick-essentials">
     <div class="container essentials-board">
       <div class="essentials-board__intro">
-        <p class="eyebrow">Quick Stops</p>
-        <h2>Quick Essentials Before Heading North</h2>
-        <p class="lead">Coffee, food, snacks, and quick stops — all close by before the day trip.</p>
-        <p class="essentials-board__note">Start fast, come back easy, and keep the little trip logistics close to the inn.</p>
+        <p class="eyebrow">Breakfast &amp; Quick Stops</p>
+        <h2>Start the Day With Breakfast at Top Notch</h2>
+        <p class="lead">Before heading north for the day, stop at Top Notch Breakfast Restaurant for a proper homestyle breakfast right here in Wiarton.</p>
+        <p class="essentials-board__note">Breakfast served daily from 8:00 AM–2:00 PM.</p>
       </div>
-      <div class="local-stop-grid" aria-label="Nearby quick stops around Wiarton Willys Inn">
-        <article class="local-stop local-stop--red">
-          <span class="local-stop__kicker">Morning Run</span>
-          <h3>Tim Hortons Before the Peninsula</h3>
-          <p>Tim Hortons is nearby — the last Tims before heading farther north into the Bruce Peninsula. Grab coffee, breakfast, or a quick stop before the day starts.</p>
+      <div class="local-stop-grid" aria-label="Nearby breakfast and quick stops around Wiarton Willys Inn">
+        <article class="local-stop local-stop--red local-stop--wide">
+          <span class="local-stop__kicker">Local Breakfast</span>
+          <h3>Top Notch Breakfast Restaurant</h3>
+          <p>Homestyle breakfast served daily from 8:00 AM–2:00 PM at 10171 Highway 6, Wiarton. Fuel up before Sauble Beach, Tobermory, Bruce Caves, or a full day on the Bruce Peninsula.</p>
+          <div class="button-row">
+            <a class="btn btn-primary" href={topNotchBreakfastMapsUrl} target="_blank" rel="noopener noreferrer" data-track="top-notch-breakfast-directions">Get Directions</a>
+            <a class="btn btn-secondary" href={topNotchBreakfastPhone} data-track="call">Call (519) 534-1310</a>
+          </div>
         </article>
         <article class="local-stop">
           <span class="local-stop__kicker">After the Day</span>
