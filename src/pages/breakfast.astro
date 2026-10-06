@@ -1,0 +1,390 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CTASection from "../components/CTASection.astro";
+
+const topNotchBreakfastMapsUrl = "https://www.google.com/maps/search/?api=1&query=Top%20Notch%20Breakfast%20Restaurant%2C%2010171%20Highway%206%2C%20Wiarton%2C%20Ontario";
+const topNotchBreakfastPhone = "tel:+15195341310";
+
+const breakfastHighlights = [
+  {
+    title: "Homestyle Breakfast",
+    copy: "A proper sit-down breakfast before a day at Sauble Beach, Tobermory, Bruce Caves, or anywhere else on the Bruce Peninsula.",
+  },
+  {
+    title: "Made Fresh. Made to Order.",
+    copy: "Classic breakfast favourites prepared to order, with the familiar comfort of a local breakfast restaurant.",
+  },
+  {
+    title: "Open Daily",
+    copy: "Breakfast is served every day from 8:00 AM to 2:00 PM.",
+  },
+];
+
+const menuHighlights = [
+  "Egg breakfasts with your choice of toast",
+  "Eggs Benedict",
+  "Breakfast sandwiches and wraps",
+  "Pancakes, French toast, and breakfast classics",
+  "Homestyle favourites for a full sit-down breakfast",
+];
+---
+
+<BaseLayout
+  title="Breakfast in Wiarton | Top Notch Breakfast Restaurant"
+  description="Start your day with homestyle breakfast at Top Notch Breakfast Restaurant, 10171 Highway 6 in Wiarton. Open daily from 8:00 AM to 2:00 PM."
+  canonicalPath="/breakfast"
+  pageType="breakfast"
+>
+  <section class="breakfast-hero">
+    <div class="container breakfast-hero__grid">
+      <div class="breakfast-hero__copy">
+        <p class="eyebrow">Top Notch Breakfast Restaurant</p>
+        <span class="breakfast-hero__badge">Open Daily • 8:00 AM–2:00 PM</span>
+        <h1>Start Your Day With a Proper Breakfast.</h1>
+        <p class="lead">
+          Homestyle breakfast in Wiarton before you head out to explore the Bruce Peninsula.
+        </p>
+
+        <div class="breakfast-hero__facts">
+          <a href={topNotchBreakfastMapsUrl} target="_blank" rel="noopener noreferrer" data-track="top-notch-breakfast-directions">
+            10171 Highway 6, Wiarton, Ontario
+          </a>
+          <a href={topNotchBreakfastPhone} data-track="call">(519) 534-1310</a>
+        </div>
+
+        <div class="button-row">
+          <a class="btn btn-primary" href={topNotchBreakfastMapsUrl} target="_blank" rel="noopener noreferrer" data-track="top-notch-breakfast-directions">Get Directions</a>
+          <a class="btn btn-secondary" href={topNotchBreakfastPhone} data-track="call">Call Top Notch</a>
+        </div>
+
+        <p class="breakfast-hero__note">
+          Top Notch Breakfast Restaurant is a separate business located at 10171 Highway 6 in Wiarton.
+        </p>
+      </div>
+
+      <div class="breakfast-hero__visual" aria-label="Top Notch Breakfast Restaurant">
+        <div class="breakfast-sign">
+          <span>TOP NOTCH</span>
+          <strong>BREAKFAST</strong>
+          <small>HOMESTYLE COOKING</small>
+          <div class="breakfast-sign__rule"></div>
+          <em>GOOD FOOD • GOOD PEOPLE • GOOD MORNING</em>
+          <b>8:00 AM–2:00 PM DAILY</b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight breakfast-highlights-section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Why Stop In</p>
+        <h2>Breakfast Before the Peninsula</h2>
+        <p class="lead">Sit down, eat properly, then head out for the day.</p>
+      </div>
+
+      <div class="breakfast-highlight-grid">
+        {breakfastHighlights.map((item) => (
+          <article class="breakfast-highlight-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section breakfast-menu-preview">
+    <div class="container breakfast-menu-preview__grid">
+      <div>
+        <p class="eyebrow">What You'll Find</p>
+        <h2>Classic Breakfast Favourites</h2>
+        <p class="lead">The kind of breakfast that actually fills you up before a full day out.</p>
+      </div>
+
+      <ul class="breakfast-menu-list">
+        {menuHighlights.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container breakfast-location-card">
+      <div>
+        <p class="eyebrow">Easy Stop in Wiarton</p>
+        <h2>10171 Highway 6</h2>
+        <p class="lead">
+          Stop in for breakfast before heading north toward Tobermory, west toward Sauble Beach, or out for a day around the Bruce Peninsula.
+        </p>
+        <p class="breakfast-location-card__hours"><strong>Open daily:</strong> 8:00 AM–2:00 PM</p>
+      </div>
+
+      <div class="button-row">
+        <a class="btn btn-primary" href={topNotchBreakfastMapsUrl} target="_blank" rel="noopener noreferrer" data-track="top-notch-breakfast-directions">Get Directions</a>
+        <a class="btn btn-secondary" href={topNotchBreakfastPhone} data-track="call">Call (519) 534-1310</a>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Breakfast First. Adventure After."
+    copy="Start the morning at Top Notch Breakfast Restaurant, then head out for Sauble Beach, Tobermory, Bruce Caves, Bluewater Park, and the rest of the Bruce Peninsula."
+    primaryLabel="Get Directions"
+    primaryHref={topNotchBreakfastMapsUrl}
+    primaryTrack="top-notch-breakfast-directions"
+    secondaryLabel="Call Top Notch"
+    secondaryHref={topNotchBreakfastPhone}
+    secondaryTrack="call"
+  />
+</BaseLayout>
+
+<style>
+  .breakfast-hero {
+    padding: clamp(2.6rem, 7vw, 6.2rem) 0;
+    background:
+      radial-gradient(circle at 85% 18%, rgba(196, 154, 66, 0.2), transparent 24rem),
+      linear-gradient(135deg, rgba(215, 25, 32, 0.05), transparent 36rem),
+      rgba(255, 253, 248, 0.96);
+    border-bottom: 1px solid rgba(17, 25, 23, 0.08);
+  }
+
+  .breakfast-hero__grid {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .breakfast-hero__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .breakfast-hero__badge {
+    display: inline-flex;
+    margin-bottom: 1rem;
+    padding: 0.42rem 0.8rem;
+    border-radius: 999px;
+    background: var(--color-rust);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .breakfast-hero h1 {
+    max-width: 760px;
+    color: var(--color-forest);
+    font-size: clamp(3rem, 7vw, 6rem);
+    text-wrap: balance;
+  }
+
+  .breakfast-hero .lead {
+    max-width: 680px;
+    margin-top: 1rem;
+  }
+
+  .breakfast-hero__facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 1rem;
+    margin: 1.25rem 0;
+  }
+
+  .breakfast-hero__facts a {
+    color: var(--color-rust-dark);
+    font-weight: 900;
+  }
+
+  .breakfast-hero__note {
+    margin-top: 1rem;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+
+  .breakfast-hero__visual {
+    min-height: 420px;
+    display: grid;
+    place-items: center;
+    padding: clamp(1rem, 3vw, 2rem);
+    border-radius: var(--radius-lg);
+    background:
+      linear-gradient(160deg, rgba(31, 58, 52, 0.98), rgba(16, 43, 52, 0.96)),
+      var(--color-forest-dark);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .breakfast-sign {
+    width: min(100%, 520px);
+    display: grid;
+    place-items: center;
+    gap: 0.5rem;
+    padding: clamp(2rem, 5vw, 3rem);
+    border: 2px solid rgba(255, 253, 248, 0.5);
+    outline: 1px solid rgba(196, 154, 66, 0.65);
+    outline-offset: -12px;
+    color: var(--color-cream-light);
+    text-align: center;
+  }
+
+  .breakfast-sign span,
+  .breakfast-sign small,
+  .breakfast-sign b {
+    font-weight: 900;
+    letter-spacing: 0.12em;
+  }
+
+  .breakfast-sign span {
+    color: #f3d596;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+  }
+
+  .breakfast-sign strong {
+    color: var(--color-cream-light);
+    font-family: var(--font-heading);
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    line-height: 0.95;
+  }
+
+  .breakfast-sign small {
+    color: #f0c9b6;
+  }
+
+  .breakfast-sign__rule {
+    width: 72%;
+    height: 2px;
+    margin: 0.65rem 0;
+    background: linear-gradient(90deg, transparent, #f3d596, transparent);
+  }
+
+  .breakfast-sign em {
+    color: var(--color-cream-light);
+    font-family: var(--font-heading);
+    font-style: normal;
+  }
+
+  .breakfast-sign b {
+    margin-top: 0.45rem;
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    background: var(--color-rust);
+    color: white;
+  }
+
+  .breakfast-highlights-section {
+    background: rgba(255, 253, 248, 0.62);
+  }
+
+  .breakfast-highlight-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .breakfast-highlight-card {
+    padding: clamp(1.25rem, 3vw, 1.7rem);
+    border: 1px solid rgba(17, 25, 23, 0.1);
+    border-radius: 18px;
+    background: rgba(255, 253, 248, 0.96);
+    box-shadow: var(--shadow-card);
+  }
+
+  .breakfast-highlight-card h3 {
+    margin-bottom: 0.55rem;
+    color: var(--color-forest);
+    font-family: var(--font-body);
+    font-size: 1.18rem;
+  }
+
+  .breakfast-highlight-card p {
+    color: var(--color-muted);
+  }
+
+  .breakfast-menu-preview {
+    background:
+      linear-gradient(135deg, rgba(215, 25, 32, 0.04), transparent 28rem),
+      var(--color-cream);
+  }
+
+  .breakfast-menu-preview__grid {
+    display: grid;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: start;
+  }
+
+  .breakfast-menu-list {
+    display: grid;
+    gap: 0.75rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .breakfast-menu-list li {
+    position: relative;
+    padding: 1rem 1rem 1rem 2.8rem;
+    border: 1px solid rgba(17, 25, 23, 0.1);
+    border-radius: 14px;
+    background: rgba(255, 253, 248, 0.96);
+    color: var(--color-forest-dark);
+    font-weight: 850;
+    box-shadow: var(--shadow-card);
+  }
+
+  .breakfast-menu-list li::before {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background: var(--color-rust);
+    content: "";
+    transform: translateY(-50%);
+  }
+
+  .breakfast-location-card {
+    display: grid;
+    gap: 1.5rem;
+    padding: clamp(1.4rem, 4vw, 2.2rem);
+    border: 1px solid rgba(17, 25, 23, 0.1);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 253, 248, 0.96);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .breakfast-location-card__hours {
+    margin-top: 1rem;
+    color: var(--color-rust-dark);
+    font-size: 1.05rem;
+  }
+
+  @media (min-width: 820px) {
+    .breakfast-hero__grid {
+      grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+    }
+
+    .breakfast-highlight-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .breakfast-menu-preview__grid {
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    }
+
+    .breakfast-location-card {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .breakfast-hero__visual {
+      min-height: 340px;
+    }
+
+    .breakfast-sign {
+      padding: 1.6rem 1rem;
+    }
+  }
+</style>
