@@ -15,6 +15,7 @@ const {
   ogDescription,
   schema = [],
   pageType = "",
+  hideMobileStickyCTA = false,
 } = Astro.props;
 ---
 
@@ -38,7 +39,7 @@ const {
       <slot />
     </main>
     <Footer />
-    <MobileStickyCTA />
+    {!hideMobileStickyCTA && <MobileStickyCTA />}
 
 
     <script is:inline define:vars={{ gaId: siteConfig.gaId }}>
