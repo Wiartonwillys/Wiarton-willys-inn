@@ -1,5 +1,6 @@
 export const siteRoutes = [
   "/",
+  "/breakfast",
   "/rooms",
   "/rooms/single-queen-room",
   "/rooms/family-room",
